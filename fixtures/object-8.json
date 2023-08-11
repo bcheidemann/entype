@@ -1,0 +1,16 @@
+{
+  "key1": true,
+  "key2": false,
+  "key3": null,
+  "key4": 1,
+  "key5": 1.1,
+  "key6": "string",
+  "key7": [
+    1,
+    2,
+    3
+  ],
+  "key8": {
+    "key1": "value1"
+  }
+}
