@@ -376,15 +376,15 @@ snapshot[`emitTypes > emit array-3.json 1`] = `
 
 snapshot[`emitTypes > emit array-4.json 1`] = `
 "pub enum T2 {
-  number(f64),
-  string(String),
+  Number(f64),
+  String(String),
 }
 pub struct T5 {
   key4: String,
 }
 pub enum T1 {
-  primitive(T2),
-  struct(T5),
+  Primitive(T2),
+  Struct(T5),
 }
 pub type Root = Vec<std::collections::HashMap<String, T1>>;
 "
@@ -492,8 +492,8 @@ pub struct Root {
 
 snapshot[`emitTypes > emit object-7.json 1`] = `
 "pub enum T1 {
-  boolean(bool),
-  string(String),
+  Boolean(bool),
+  String(String),
 }
 pub struct Root {
   key: Vec<T1>,

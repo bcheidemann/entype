@@ -306,7 +306,7 @@ export function collapseUnknownTypes(_types: UnknownType[]): UnknownType {
 }
 
 type EmitFn = (data: string) => void;
-type GetTypeNameFn = () => string;
+type GetTypeNameFn = (name?: string) => string;
 
 export function emitType(
   name: string,
@@ -421,7 +421,7 @@ export function emitEnumType(
     .map(([key, value]) => {
       const typeName = getTypeName();
       const inlineType = emitType(typeName, value, getTypeName, emit, true);
-      return `  ${key}(${inlineType ?? typeName}),`;
+      return `  ${toPascalCase(key)}(${inlineType ?? typeName}),`;
     });
   emit(
     [
@@ -575,6 +575,10 @@ export function getPrimitiveName(primitive: PrimitiveType["name"]) {
     case "boolean":
       return "bool";
   }
+}
+
+export function toPascalCase(str: string) {
+  return str[0].toUpperCase() + str.slice(1);
 }
 
 if (import.meta.main) {
