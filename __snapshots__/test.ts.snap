@@ -55,6 +55,55 @@ snapshot[`parseJson > parses array-2.json 1`] = `
 }
 `;
 
+snapshot[`parseJson > parses array-3.json 1`] = `
+{
+  elementType: {
+    kind: "map",
+    valueType: {
+      kind: "primitive",
+      name: "string",
+    },
+  },
+  kind: "array",
+}
+`;
+
+snapshot[`parseJson > parses array-4.json 1`] = `
+{
+  elementType: {
+    kind: "map",
+    valueType: {
+      kind: "enum",
+      variants: Map(2) {
+        "primitive" => {
+          kind: "enum",
+          variants: Map(2) {
+            "number" => {
+              kind: "primitive",
+              name: "number",
+            },
+            "string" => {
+              kind: "primitive",
+              name: "string",
+            },
+          },
+        },
+        "struct" => {
+          fields: Map(1) {
+            "key4" => {
+              kind: "primitive",
+              name: "string",
+            },
+          },
+          kind: "struct",
+        },
+      },
+    },
+  },
+  kind: "array",
+}
+`;
+
 snapshot[`parseJson > parses boolean-false.json 1`] = `
 {
   kind: "primitive",
@@ -71,65 +120,31 @@ snapshot[`parseJson > parses boolean-true.json 1`] = `
 
 snapshot[`parseJson > parses map-0.json 1`] = `
 {
-  fields: Map(4) {
-    "a.b.c" => {
-      kind: "primitive",
-      name: "number",
-    },
-    "a.b.d" => {
-      kind: "primitive",
-      name: "number",
-    },
-    "a.b.e" => {
-      kind: "primitive",
-      name: "number",
-    },
-    "a.b.f" => {
-      kind: "primitive",
-      name: "number",
-    },
+  kind: "map",
+  valueType: {
+    kind: "primitive",
+    name: "number",
   },
-  kind: "struct",
 }
 `;
 
 snapshot[`parseJson > parses map-1.json 1`] = `
 {
-  fields: Map(4) {
-    "1" => {
-      kind: "primitive",
-      name: "number",
-    },
-    "2" => {
-      kind: "primitive",
-      name: "number",
-    },
-    "3" => {
-      kind: "primitive",
-      name: "number",
-    },
-    "4" => {
-      kind: "primitive",
-      name: "number",
-    },
+  kind: "map",
+  valueType: {
+    kind: "primitive",
+    name: "number",
   },
-  kind: "struct",
 }
 `;
 
 snapshot[`parseJson > parses map-2.json 1`] = `
 {
-  fields: Map(2) {
-    "key.2" => {
-      kind: "primitive",
-      name: "number",
-    },
-    "key1" => {
-      kind: "primitive",
-      name: "number",
-    },
+  kind: "map",
+  valueType: {
+    kind: "primitive",
+    name: "number",
   },
-  kind: "struct",
 }
 `;
 
@@ -354,6 +369,27 @@ pub type Root = Vec<T0>;
 "
 `;
 
+snapshot[`emitTypes > emit array-3.json 1`] = `
+"pub type Root = Vec<std::collections::HashMap<String, String>>;
+"
+`;
+
+snapshot[`emitTypes > emit array-4.json 1`] = `
+"pub enum T2 {
+  number(f64),
+  string(String),
+}
+pub struct T5 {
+  key4: String,
+}
+pub enum T1 {
+  primitive(T2),
+  struct(T5),
+}
+pub type Root = Vec<std::collections::HashMap<String, T1>>;
+"
+`;
+
 snapshot[`emitTypes > emit boolean-false.json 1`] = `
 "pub type Root = bool;
 "
@@ -365,30 +401,17 @@ snapshot[`emitTypes > emit boolean-true.json 1`] = `
 `;
 
 snapshot[`emitTypes > emit map-0.json 1`] = `
-"pub struct Root {
-  a.b.c: f64,
-  a.b.d: f64,
-  a.b.e: f64,
-  a.b.f: f64,
-}
+"pub type Root = std::collections::HashMap<String, f64>;
 "
 `;
 
 snapshot[`emitTypes > emit map-1.json 1`] = `
-"pub struct Root {
-  1: f64,
-  2: f64,
-  3: f64,
-  4: f64,
-}
+"pub type Root = std::collections::HashMap<String, f64>;
 "
 `;
 
 snapshot[`emitTypes > emit map-2.json 1`] = `
-"pub struct Root {
-  key.2: f64,
-  key1: f64,
-}
+"pub type Root = std::collections::HashMap<String, f64>;
 "
 `;
 

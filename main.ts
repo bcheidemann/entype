@@ -1,6 +1,42 @@
 import "npm:@total-typescript/ts-reset";
 import { ArrayType, EnumType, HomogeneousTypeArray, Json, JsonArray, JsonObject, MapType, NullType, OptionType, PrimitiveType, StructType, Type, UnknownType } from "./types.ts";
 
+export function isStructType(type: Type): type is StructType {
+  return type.kind === "struct";
+}
+
+export function isEnumType(type: Type): type is EnumType {
+  return type.kind === "enum";
+}
+
+export function isMapType(type: Type): type is MapType {
+  return type.kind === "map";
+}
+
+export function isOptionType(type: Type): type is OptionType {
+  return type.kind === "option";
+}
+
+export function isArrayType(type: Type): type is ArrayType {
+  return type.kind === "array";
+}
+
+export function isPrimitiveType(type: Type): type is PrimitiveType {
+  return type.kind === "primitive";
+}
+
+export function isNullType(type: Type): type is NullType {
+  return type.kind === "null";
+}
+
+export function isUnknownType(type: Type): type is UnknownType {
+  return type.kind === "unknown";
+}
+
+export function isHomogeneousTypeArray(types: Type[]): types is HomogeneousTypeArray {
+  return types.every((type) => type.kind === types[0].kind);
+}
+
 export function parseJson(obj: Json): Type {
   switch (typeof obj) {
     case "object":
@@ -32,18 +68,25 @@ export function parseJsonArray(obj: JsonArray): Type {
   return { kind: "array", elementType };
 }
 
+export function isIdentifier(str: string) {
+  return /^[a-zA-Z_][a-zA-Z0-9_]*$/.test(str);
+}
+
 export function parseJsonObject(obj: JsonObject): Type {
   const fields = new Map(
     Object
       .entries(obj)
       .map(([key, value]) => [key, parseJson(value)])
   );
-  // TODO: Handle map types (i.e. when keys are not valid identifiers)
+  const isMap = !Array
+    .from(fields.keys())
+    .every(isIdentifier);
+  if (isMap) {
+    const valueTypes = Array.from(fields.values());
+    const valueType = collapseTypes(valueTypes);
+    return { kind: "map", valueType };
+  }
   return { kind: "struct", fields };
-}
-
-export function isHomogeneousTypeArray(types: Type[]): types is HomogeneousTypeArray {
-  return types.every((type) => type.kind === types[0].kind);
 }
 
 export function collapseTypes(types: Type[]): Type {
@@ -97,10 +140,36 @@ export function collapseNonHomogeneousTypes(types: Type[]): Type {
     );
   }
 
+  // Coerce nulls to option types
   if (uniqueTypes.has("null")) {
-    const nonNullTypes = types.filter((type) => type.kind !== "null");
+    const nonNullTypes = types.filter((type) => !isNullType(type));
     const collapsedType = collapseTypes(nonNullTypes);
     return { kind: "option", valueType: collapsedType };
+  }
+
+  // Coerce structs to maps so that we can collapse them together.
+  if (uniqueTypes.has("map") && uniqueTypes.has("struct")) {
+    return collapseTypes(
+      types.map((type) => {
+        switch (type.kind) {
+          case "struct":
+            return {
+              kind: "map",
+              valueType: collapseTypes(Array.from(type.fields.values())),
+            };
+          default:
+            return type;
+        }
+      })
+    );
+  }
+
+  // Collapse maps
+  if (uniqueTypes.has("map")) {
+    const mapTypes = types.filter(isMapType);
+    const collapsedMapType = collapseMapTypes(mapTypes);
+    const nonMapTypes = types.filter((type) => !isMapType(type));
+    return collapseTypes([...nonMapTypes, collapsedMapType]);
   }
 
   const collectedVariants: {

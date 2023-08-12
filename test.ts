@@ -29,6 +29,14 @@ describe("parseJson", () => {
     await run(ctx, "array-2.json");
   });
 
+  it("parses array-3.json", async (ctx) => {
+    await run(ctx, "array-3.json");
+  });
+
+  it("parses array-4.json", async (ctx) => {
+    await run(ctx, "array-4.json");
+  });
+
   it("parses boolean-false.json", async (ctx) => {
     await run(ctx, "boolean-false.json");
   });
@@ -124,6 +132,14 @@ describe("emitTypes", () => {
 
   it("emit array-2.json", async (ctx) => {
     await run(ctx, "array-2.json");
+  });
+
+  it("emit array-3.json", async (ctx) => {
+    await run(ctx, "array-3.json");
+  });
+
+  it("emit array-4.json", async (ctx) => {
+    await run(ctx, "array-4.json");
   });
 
   it("emit boolean-false.json", async (ctx) => {
