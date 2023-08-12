@@ -329,3 +329,168 @@ snapshot[`parseJson > parses object-8.json 1`] = `
   kind: "struct",
 }
 `;
+
+snapshot[`emitTypes > emit array-0.json 1`] = `
+"pub type Root = Vec<f64>;
+"
+`;
+
+snapshot[`emitTypes > emit array-1.json 1`] = `
+"pub struct T0 {
+  key1: String,
+  key2: String,
+}
+pub type Root = Vec<T0>;
+"
+`;
+
+snapshot[`emitTypes > emit array-2.json 1`] = `
+"pub struct T0 {
+  key1: String,
+  key2: String,
+  optional: Option<String>,
+}
+pub type Root = Vec<T0>;
+"
+`;
+
+snapshot[`emitTypes > emit boolean-false.json 1`] = `
+"pub type Root = bool;
+"
+`;
+
+snapshot[`emitTypes > emit boolean-true.json 1`] = `
+"pub type Root = bool;
+"
+`;
+
+snapshot[`emitTypes > emit map-0.json 1`] = `
+"pub struct Root {
+  a.b.c: f64,
+  a.b.d: f64,
+  a.b.e: f64,
+  a.b.f: f64,
+}
+"
+`;
+
+snapshot[`emitTypes > emit map-1.json 1`] = `
+"pub struct Root {
+  1: f64,
+  2: f64,
+  3: f64,
+  4: f64,
+}
+"
+`;
+
+snapshot[`emitTypes > emit map-2.json 1`] = `
+"pub struct Root {
+  key.2: f64,
+  key1: f64,
+}
+"
+`;
+
+snapshot[`emitTypes > emit null.json 1`] = `
+"pub type Root = ();
+"
+`;
+
+snapshot[`emitTypes > emit number-negative.json 1`] = `
+"pub type Root = f64;
+"
+`;
+
+snapshot[`emitTypes > emit number-positive.json 1`] = `
+"pub type Root = f64;
+"
+`;
+
+snapshot[`emitTypes > emit number-zero.json 1`] = `
+"pub type Root = f64;
+"
+`;
+
+snapshot[`emitTypes > emit object-0.json 1`] = `
+"pub struct Root {
+  key: String,
+}
+"
+`;
+
+snapshot[`emitTypes > emit object-1.json 1`] = `
+"pub struct Root {
+  key: f64,
+}
+"
+`;
+
+snapshot[`emitTypes > emit object-2.json 1`] = `
+"pub struct Root {
+  key: bool,
+}
+"
+`;
+
+snapshot[`emitTypes > emit object-3.json 1`] = `
+"pub struct Root {
+  key: Vec<String>,
+}
+"
+`;
+
+snapshot[`emitTypes > emit object-4.json 1`] = `
+"pub struct T0 {
+  key: String,
+}
+pub struct Root {
+  key: T0,
+}
+"
+`;
+
+snapshot[`emitTypes > emit object-5.json 1`] = `
+"pub struct Root {
+  key: (),
+}
+"
+`;
+
+snapshot[`emitTypes > emit object-6.json 1`] = `
+"pub struct T1 {
+  key: String,
+}
+pub struct Root {
+  key: Vec<T1>,
+}
+"
+`;
+
+snapshot[`emitTypes > emit object-7.json 1`] = `
+"pub enum T1 {
+  boolean(bool),
+  string(String),
+}
+pub struct Root {
+  key: Vec<T1>,
+}
+"
+`;
+
+snapshot[`emitTypes > emit object-8.json 1`] = `
+"pub struct T8 {
+  key1: String,
+}
+pub struct Root {
+  key1: bool,
+  key2: bool,
+  key3: (),
+  key4: f64,
+  key5: f64,
+  key6: String,
+  key7: Vec<f64>,
+  key8: T8,
+}
+"
+`;
