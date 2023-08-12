@@ -394,7 +394,7 @@ export function emitStructType(
     .from(type.fields.entries())
     .sort(([key1], [key2]) => key1.localeCompare(key2))
     .map(([key, value]) => {
-      const typeName = getTypeName();
+      const typeName = getTypeName(key);
       const inlineType = emitType(typeName, value, getTypeName, emit, true);
       return `  ${key}: ${inlineType ?? typeName},`;
     });
@@ -419,7 +419,7 @@ export function emitEnumType(
     .from(type.variants.entries())
     .sort(([key1], [key2]) => key1.localeCompare(key2))
     .map(([key, value]) => {
-      const typeName = getTypeName();
+      const typeName = getTypeName(key);
       const inlineType = emitType(typeName, value, getTypeName, emit, true);
       return `  ${toPascalCase(key)}(${inlineType ?? typeName}),`;
     });
@@ -440,7 +440,7 @@ export function emitMapType(
   emit: EmitFn,
   preferInline: boolean,
 ) {
-  const typeName = getTypeName();
+  const typeName = getTypeName(`${removeNumberSuffix(name)}Entry`);
   const innerInlineType = emitType(typeName, type.valueType, getTypeName, emit, true);
   const inlineType = `std::collections::HashMap<String, ${innerInlineType ?? typeName}>`;
   if (preferInline) {
@@ -482,7 +482,7 @@ export function emitArrayType(
   emit: EmitFn,
   preferInline: boolean,
 ) {
-  const typeName = getTypeName();
+  const typeName = getTypeName(`${removeNumberSuffix(name)}Element`);
   const innerInlineType = emitType(typeName, type.elementType, getTypeName, emit, true);
   const inlineType = `Vec<${innerInlineType ?? typeName}>`;
   if (preferInline) {
@@ -559,8 +559,11 @@ export function emitTypes(type: Type) {
     code += data;
   }
   let counter = 0;
-  const getTypeName = () => {
-    return `T${counter++}`;
+  const getTypeName = (name?: string) => {
+    const namePrefix = name
+      ? removeNumberSuffix(toPascalCase(name))
+      : "T";
+    return `${namePrefix}${counter++}`;
   };
   emitType("Root", type, getTypeName, emit, false);
   return code;
@@ -579,6 +582,10 @@ export function getPrimitiveName(primitive: PrimitiveType["name"]) {
 
 export function toPascalCase(str: string) {
   return str[0].toUpperCase() + str.slice(1);
+}
+
+export function removeNumberSuffix(str: string) {
+  return str.replace(/[0-9]+$/, "");
 }
 
 if (import.meta.main) {

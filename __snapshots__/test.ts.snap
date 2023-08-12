@@ -351,21 +351,21 @@ snapshot[`emitTypes > emit array-0.json 1`] = `
 `;
 
 snapshot[`emitTypes > emit array-1.json 1`] = `
-"pub struct T0 {
+"pub struct RootElement0 {
   key1: String,
   key2: String,
 }
-pub type Root = Vec<T0>;
+pub type Root = Vec<RootElement0>;
 "
 `;
 
 snapshot[`emitTypes > emit array-2.json 1`] = `
-"pub struct T0 {
+"pub struct RootElement0 {
   key1: String,
   key2: String,
   optional: Option<String>,
 }
-pub type Root = Vec<T0>;
+pub type Root = Vec<RootElement0>;
 "
 `;
 
@@ -375,18 +375,18 @@ snapshot[`emitTypes > emit array-3.json 1`] = `
 `;
 
 snapshot[`emitTypes > emit array-4.json 1`] = `
-"pub enum T2 {
+"pub enum Primitive2 {
   Number(f64),
   String(String),
 }
-pub struct T5 {
+pub struct Struct5 {
   key4: String,
 }
-pub enum T1 {
-  Primitive(T2),
-  Struct(T5),
+pub enum RootElementEntry1 {
+  Primitive(Primitive2),
+  Struct(Struct5),
 }
-pub type Root = Vec<std::collections::HashMap<String, T1>>;
+pub type Root = Vec<std::collections::HashMap<String, RootElementEntry1>>;
 "
 `;
 
@@ -464,11 +464,11 @@ snapshot[`emitTypes > emit object-3.json 1`] = `
 `;
 
 snapshot[`emitTypes > emit object-4.json 1`] = `
-"pub struct T0 {
+"pub struct Key0 {
   key: String,
 }
 pub struct Root {
-  key: T0,
+  key: Key0,
 }
 "
 `;
@@ -481,28 +481,28 @@ snapshot[`emitTypes > emit object-5.json 1`] = `
 `;
 
 snapshot[`emitTypes > emit object-6.json 1`] = `
-"pub struct T1 {
+"pub struct KeyElement1 {
   key: String,
 }
 pub struct Root {
-  key: Vec<T1>,
+  key: Vec<KeyElement1>,
 }
 "
 `;
 
 snapshot[`emitTypes > emit object-7.json 1`] = `
-"pub enum T1 {
+"pub enum KeyElement1 {
   Boolean(bool),
   String(String),
 }
 pub struct Root {
-  key: Vec<T1>,
+  key: Vec<KeyElement1>,
 }
 "
 `;
 
 snapshot[`emitTypes > emit object-8.json 1`] = `
-"pub struct T8 {
+"pub struct Key8 {
   key1: String,
 }
 pub struct Root {
@@ -513,7 +513,7 @@ pub struct Root {
   key5: f64,
   key6: String,
   key7: Vec<f64>,
-  key8: T8,
+  key8: Key8,
 }
 "
 `;
