@@ -1,0 +1,21 @@
+{
+  "multipart": [
+    {
+      "AND": [
+        {
+          "facing": "west"
+        }
+      ]
+    },
+    {
+      "AND": [
+        {
+          "facing": "west"
+        },
+        {
+          "slot_0_occupied": "true"
+        }
+      ]
+    }
+  ]
+}

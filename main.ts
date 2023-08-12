@@ -123,9 +123,33 @@ export function collapseHomogeneousTypes(types: HomogeneousTypeArray): Type {
 }
 
 export function collapseNonHomogeneousTypes(types: Type[]): Type {
+  const type = collapseNonHomogeneousTypesImpl(types);
+  if (isOptionType(type) && isOptionType(type.valueType)) {
+    debugger;
+    collapseNonHomogeneousTypesImpl(types);
+  }
+  return type;
+}
+
+export function collapseNonHomogeneousTypesImpl(types: Type[]): Type {
   const uniqueTypes = new Set<Type["kind"]>(
     types.map((type) => type.kind)
   );
+
+  if (uniqueTypes.has("option")) {
+    const innerTypes = types
+      .map((type) => {
+        switch (type.kind) {
+          case "option":
+            return type.valueType;
+          default:
+            return type;
+        }
+      })
+      .filter((type) => !isNullType(type));
+    const collapsedType = collapseTypes(innerTypes);
+    return { kind: "option", valueType: collapsedType };
+  }
 
   if (uniqueTypes.has("enum")) {
     return collapseNonHomogeneousTypes(

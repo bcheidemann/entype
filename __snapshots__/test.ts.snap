@@ -345,6 +345,44 @@ snapshot[`parseJson > parses object-8.json 1`] = `
 }
 `;
 
+snapshot[`parseJson > parses regression-0-option-option.json 1`] = `
+{
+  fields: Map(1) {
+    "multipart" => {
+      elementType: {
+        fields: Map(1) {
+          "AND" => {
+            elementType: {
+              fields: Map(2) {
+                "facing" => {
+                  kind: "option",
+                  valueType: {
+                    kind: "primitive",
+                    name: "string",
+                  },
+                },
+                "slot_0_occupied" => {
+                  kind: "option",
+                  valueType: {
+                    kind: "primitive",
+                    name: "string",
+                  },
+                },
+              },
+              kind: "struct",
+            },
+            kind: "array",
+          },
+        },
+        kind: "struct",
+      },
+      kind: "array",
+    },
+  },
+  kind: "struct",
+}
+`;
+
 snapshot[`emitTypes > emit array-0.json 1`] = `
 "pub type Root = Vec<f64>;
 "
@@ -518,6 +556,20 @@ pub struct Root {
 "
 `;
 
+snapshot[`emitTypes > parses regression-0-option-option.json 1`] = `
+"pub struct ANDElement3 {
+  facing: Option<String>,
+  slot_0_occupied: Option<String>,
+}
+pub struct MultipartElement1 {
+  AND: Vec<ANDElement3>,
+}
+pub struct Root {
+  multipart: Vec<MultipartElement1>,
+}
+"
+`;
+
 snapshot[`Parse Multiple Files > datapack/blockstates 1`] = `
 {
   fields: Map(2) {
@@ -539,41 +591,29 @@ snapshot[`Parse Multiple Files > datapack/blockstates 1`] = `
                       "uvlock" => {
                         kind: "option",
                         valueType: {
-                          kind: "option",
-                          valueType: {
-                            kind: "primitive",
-                            name: "boolean",
-                          },
+                          kind: "primitive",
+                          name: "boolean",
                         },
                       },
                       "weight" => {
                         kind: "option",
                         valueType: {
-                          kind: "option",
-                          valueType: {
-                            kind: "primitive",
-                            name: "number",
-                          },
+                          kind: "primitive",
+                          name: "number",
                         },
                       },
                       "x" => {
                         kind: "option",
                         valueType: {
-                          kind: "option",
-                          valueType: {
-                            kind: "primitive",
-                            name: "number",
-                          },
+                          kind: "primitive",
+                          name: "number",
                         },
                       },
                       "y" => {
                         kind: "option",
                         valueType: {
-                          kind: "option",
-                          valueType: {
-                            kind: "primitive",
-                            name: "number",
-                          },
+                          kind: "primitive",
+                          name: "number",
                         },
                       },
                     },
@@ -590,40 +630,22 @@ snapshot[`Parse Multiple Files > datapack/blockstates 1`] = `
                     "uvlock" => {
                       kind: "option",
                       valueType: {
-                        kind: "option",
-                        valueType: {
-                          kind: "primitive",
-                          name: "boolean",
-                        },
+                        kind: "primitive",
+                        name: "boolean",
                       },
                     },
                     "x" => {
                       kind: "option",
                       valueType: {
-                        kind: "option",
-                        valueType: {
-                          kind: "primitive",
-                          name: "number",
-                        },
+                        kind: "primitive",
+                        name: "number",
                       },
                     },
                     "y" => {
                       kind: "option",
                       valueType: {
-                        kind: "enum",
-                        variants: Map(2) {
-                          "option" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "primitive",
-                              name: "number",
-                            },
-                          },
-                          "primitive" => {
-                            kind: "primitive",
-                            name: "number",
-                          },
-                        },
+                        kind: "primitive",
+                        name: "number",
                       },
                     },
                   },
@@ -634,15 +656,55 @@ snapshot[`Parse Multiple Files > datapack/blockstates 1`] = `
             "when" => {
               kind: "option",
               valueType: {
-                kind: "enum",
-                variants: Map(2) {
-                  "option" => {
+                fields: Map(16) {
+                  "AND" => {
                     kind: "option",
                     valueType: {
-                      fields: Map(8) {
-                        "east" => {
-                          kind: "option",
-                          valueType: {
+                      elementType: {
+                        fields: Map(7) {
+                          "facing" => {
+                            kind: "option",
+                            valueType: {
+                              kind: "primitive",
+                              name: "string",
+                            },
+                          },
+                          "slot_0_occupied" => {
+                            kind: "option",
+                            valueType: {
+                              kind: "primitive",
+                              name: "string",
+                            },
+                          },
+                          "slot_1_occupied" => {
+                            kind: "option",
+                            valueType: {
+                              kind: "primitive",
+                              name: "string",
+                            },
+                          },
+                          "slot_2_occupied" => {
+                            kind: "option",
+                            valueType: {
+                              kind: "primitive",
+                              name: "string",
+                            },
+                          },
+                          "slot_3_occupied" => {
+                            kind: "option",
+                            valueType: {
+                              kind: "primitive",
+                              name: "string",
+                            },
+                          },
+                          "slot_4_occupied" => {
+                            kind: "option",
+                            valueType: {
+                              kind: "primitive",
+                              name: "string",
+                            },
+                          },
+                          "slot_5_occupied" => {
                             kind: "option",
                             valueType: {
                               kind: "primitive",
@@ -650,358 +712,157 @@ snapshot[`Parse Multiple Files > datapack/blockstates 1`] = `
                             },
                           },
                         },
-                        "has_bottle_0" => {
-                          kind: "option",
-                          valueType: {
-                            kind: "option",
-                            valueType: {
-                              kind: "primitive",
-                              name: "string",
-                            },
-                          },
-                        },
-                        "has_bottle_1" => {
-                          kind: "option",
-                          valueType: {
-                            kind: "option",
-                            valueType: {
-                              kind: "primitive",
-                              name: "string",
-                            },
-                          },
-                        },
-                        "has_bottle_2" => {
-                          kind: "option",
-                          valueType: {
-                            kind: "option",
-                            valueType: {
-                              kind: "primitive",
-                              name: "string",
-                            },
-                          },
-                        },
-                        "level" => {
-                          kind: "option",
-                          valueType: {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                        },
-                        "north" => {
-                          kind: "option",
-                          valueType: {
-                            kind: "option",
-                            valueType: {
-                              kind: "primitive",
-                              name: "string",
-                            },
-                          },
-                        },
-                        "south" => {
-                          kind: "option",
-                          valueType: {
-                            kind: "option",
-                            valueType: {
-                              kind: "primitive",
-                              name: "string",
-                            },
-                          },
-                        },
-                        "west" => {
-                          kind: "option",
-                          valueType: {
-                            kind: "option",
-                            valueType: {
-                              kind: "primitive",
-                              name: "string",
-                            },
-                          },
-                        },
+                        kind: "struct",
                       },
-                      kind: "struct",
+                      kind: "array",
                     },
                   },
-                  "struct" => {
-                    fields: Map(12) {
-                      "AND" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "option",
-                          valueType: {
-                            elementType: {
-                              fields: Map(7) {
-                                "facing" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "string",
-                                  },
-                                },
-                                "slot_0_occupied" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                },
-                                "slot_1_occupied" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                },
-                                "slot_2_occupied" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                },
-                                "slot_3_occupied" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                },
-                                "slot_4_occupied" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                },
-                                "slot_5_occupied" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                },
-                              },
-                              kind: "struct",
+                  "OR" => {
+                    kind: "option",
+                    valueType: {
+                      elementType: {
+                        fields: Map(5) {
+                          "east" => {
+                            kind: "option",
+                            valueType: {
+                              kind: "primitive",
+                              name: "string",
                             },
-                            kind: "array",
                           },
-                        },
-                      },
-                      "OR" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "option",
-                          valueType: {
-                            elementType: {
-                              fields: Map(5) {
-                                "east" => {
-                                  kind: "enum",
-                                  variants: Map(2) {
-                                    "option" => {
-                                      kind: "option",
-                                      valueType: {
-                                        kind: "primitive",
-                                        name: "string",
-                                      },
-                                    },
-                                    "primitive" => {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                },
-                                "north" => {
-                                  kind: "enum",
-                                  variants: Map(2) {
-                                    "option" => {
-                                      kind: "option",
-                                      valueType: {
-                                        kind: "primitive",
-                                        name: "string",
-                                      },
-                                    },
-                                    "primitive" => {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                },
-                                "south" => {
-                                  kind: "enum",
-                                  variants: Map(2) {
-                                    "option" => {
-                                      kind: "option",
-                                      valueType: {
-                                        kind: "primitive",
-                                        name: "string",
-                                      },
-                                    },
-                                    "primitive" => {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                },
-                                "up" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                },
-                                "west" => {
-                                  kind: "enum",
-                                  variants: Map(2) {
-                                    "option" => {
-                                      kind: "option",
-                                      valueType: {
-                                        kind: "primitive",
-                                        name: "string",
-                                      },
-                                    },
-                                    "primitive" => {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                },
-                              },
-                              kind: "struct",
+                          "north" => {
+                            kind: "option",
+                            valueType: {
+                              kind: "primitive",
+                              name: "string",
                             },
-                            kind: "array",
                           },
-                        },
-                      },
-                      "age" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "option",
-                          valueType: {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                        },
-                      },
-                      "down" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "option",
-                          valueType: {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                        },
-                      },
-                      "east" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "option",
-                          valueType: {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                        },
-                      },
-                      "facing" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "enum",
-                          variants: Map(2) {
-                            "option" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "primitive",
-                                name: "string",
-                              },
+                          "south" => {
+                            kind: "option",
+                            valueType: {
+                              kind: "primitive",
+                              name: "string",
                             },
-                            "primitive" => {
+                          },
+                          "up" => {
+                            kind: "option",
+                            valueType: {
+                              kind: "primitive",
+                              name: "string",
+                            },
+                          },
+                          "west" => {
+                            kind: "option",
+                            valueType: {
                               kind: "primitive",
                               name: "string",
                             },
                           },
                         },
+                        kind: "struct",
                       },
-                      "flower_amount" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "primitive",
-                          name: "string",
-                        },
-                      },
-                      "leaves" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "option",
-                          valueType: {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                        },
-                      },
-                      "north" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "option",
-                          valueType: {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                        },
-                      },
-                      "south" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "option",
-                          valueType: {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                        },
-                      },
-                      "up" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "option",
-                          valueType: {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                        },
-                      },
-                      "west" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "option",
-                          valueType: {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                        },
-                      },
+                      kind: "array",
                     },
-                    kind: "struct",
+                  },
+                  "age" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
+                  },
+                  "down" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
+                  },
+                  "east" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
+                  },
+                  "facing" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
+                  },
+                  "flower_amount" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
+                  },
+                  "has_bottle_0" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
+                  },
+                  "has_bottle_1" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
+                  },
+                  "has_bottle_2" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
+                  },
+                  "leaves" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
+                  },
+                  "level" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
+                  },
+                  "north" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
+                  },
+                  "south" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
+                  },
+                  "up" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
+                  },
+                  "west" => {
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "string",
+                    },
                   },
                 },
+                kind: "struct",
               },
             },
           },
@@ -1027,27 +888,15 @@ snapshot[`Parse Multiple Files > datapack/blockstates 1`] = `
                   "x" => {
                     kind: "option",
                     valueType: {
-                      kind: "option",
-                      valueType: {
-                        kind: "primitive",
-                        name: "number",
-                      },
+                      kind: "primitive",
+                      name: "number",
                     },
                   },
                   "y" => {
-                    kind: "enum",
-                    variants: Map(2) {
-                      "option" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "primitive",
-                          name: "number",
-                        },
-                      },
-                      "primitive" => {
-                        kind: "primitive",
-                        name: "number",
-                      },
+                    kind: "option",
+                    valueType: {
+                      kind: "primitive",
+                      name: "number",
                     },
                   },
                 },
@@ -1064,40 +913,22 @@ snapshot[`Parse Multiple Files > datapack/blockstates 1`] = `
                 "uvlock" => {
                   kind: "option",
                   valueType: {
-                    kind: "enum",
-                    variants: Map(2) {
-                      "option" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "primitive",
-                          name: "boolean",
-                        },
-                      },
-                      "primitive" => {
-                        kind: "primitive",
-                        name: "boolean",
-                      },
-                    },
+                    kind: "primitive",
+                    name: "boolean",
                   },
                 },
                 "x" => {
                   kind: "option",
                   valueType: {
-                    kind: "option",
-                    valueType: {
-                      kind: "primitive",
-                      name: "number",
-                    },
+                    kind: "primitive",
+                    name: "number",
                   },
                 },
                 "y" => {
                   kind: "option",
                   valueType: {
-                    kind: "option",
-                    valueType: {
-                      kind: "primitive",
-                      name: "number",
-                    },
+                    kind: "primitive",
+                    name: "number",
                   },
                 },
               },
@@ -1388,1050 +1219,259 @@ snapshot[`Parse Multiple Files > datapack/models/block 1`] = `
                 "down" => {
                   kind: "option",
                   valueType: {
-                    kind: "enum",
-                    variants: Map(2) {
-                      "option" => {
+                    fields: Map(5) {
+                      "cullface" => {
                         kind: "option",
                         valueType: {
-                          fields: Map(5) {
-                            "cullface" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                  "primitive" => {
-                                    kind: "primitive",
-                                    name: "string",
-                                  },
-                                },
-                              },
-                            },
-                            "rotation" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                  },
-                                  "primitive" => {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                              },
-                            },
-                            "texture" => {
-                              kind: "primitive",
-                              name: "string",
-                            },
-                            "tintindex" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "option",
-                                valueType: {
-                                  kind: "primitive",
-                                  name: "number",
-                                },
-                              },
-                            },
-                            "uv" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "array" => {
-                                    elementType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                    kind: "array",
-                                  },
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      elementType: {
-                                        kind: "primitive",
-                                        name: "number",
-                                      },
-                                      kind: "array",
-                                    },
-                                  },
-                                },
-                              },
-                            },
-                          },
-                          kind: "struct",
+                          kind: "primitive",
+                          name: "string",
                         },
                       },
-                      "struct" => {
-                        fields: Map(5) {
-                          "cullface" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "string",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "string",
-                                },
-                              },
-                            },
-                          },
-                          "rotation" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "number",
-                                },
-                              },
-                            },
-                          },
-                          "texture" => {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                          "tintindex" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "number",
-                                },
-                              },
-                            },
-                          },
-                          "uv" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "array" => {
-                                  elementType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                  kind: "array",
-                                },
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    elementType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                    kind: "array",
-                                  },
-                                },
-                              },
-                            },
-                          },
+                      "rotation" => {
+                        kind: "option",
+                        valueType: {
+                          kind: "primitive",
+                          name: "number",
                         },
-                        kind: "struct",
+                      },
+                      "texture" => {
+                        kind: "primitive",
+                        name: "string",
+                      },
+                      "tintindex" => {
+                        kind: "option",
+                        valueType: {
+                          kind: "primitive",
+                          name: "number",
+                        },
+                      },
+                      "uv" => {
+                        kind: "option",
+                        valueType: {
+                          elementType: {
+                            kind: "primitive",
+                            name: "number",
+                          },
+                          kind: "array",
+                        },
                       },
                     },
+                    kind: "struct",
                   },
                 },
                 "east" => {
                   kind: "option",
                   valueType: {
-                    kind: "enum",
-                    variants: Map(2) {
-                      "option" => {
+                    fields: Map(5) {
+                      "cullface" => {
                         kind: "option",
                         valueType: {
-                          fields: Map(4) {
-                            "cullface" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                  "primitive" => {
-                                    kind: "primitive",
-                                    name: "string",
-                                  },
-                                },
-                              },
-                            },
-                            "texture" => {
-                              kind: "primitive",
-                              name: "string",
-                            },
-                            "tintindex" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                  },
-                                  "primitive" => {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                              },
-                            },
-                            "uv" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "array" => {
-                                    elementType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                    kind: "array",
-                                  },
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      elementType: {
-                                        kind: "primitive",
-                                        name: "number",
-                                      },
-                                      kind: "array",
-                                    },
-                                  },
-                                },
-                              },
-                            },
-                          },
-                          kind: "struct",
+                          kind: "primitive",
+                          name: "string",
                         },
                       },
-                      "struct" => {
-                        fields: Map(5) {
-                          "cullface" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "string",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "string",
-                                },
-                              },
-                            },
-                          },
-                          "rotation" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "number",
-                                },
-                              },
-                            },
-                          },
-                          "texture" => {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                          "tintindex" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "number",
-                                },
-                              },
-                            },
-                          },
-                          "uv" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "array" => {
-                                  elementType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                  kind: "array",
-                                },
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    elementType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                    kind: "array",
-                                  },
-                                },
-                              },
-                            },
-                          },
+                      "rotation" => {
+                        kind: "option",
+                        valueType: {
+                          kind: "primitive",
+                          name: "number",
                         },
-                        kind: "struct",
+                      },
+                      "texture" => {
+                        kind: "primitive",
+                        name: "string",
+                      },
+                      "tintindex" => {
+                        kind: "option",
+                        valueType: {
+                          kind: "primitive",
+                          name: "number",
+                        },
+                      },
+                      "uv" => {
+                        kind: "option",
+                        valueType: {
+                          elementType: {
+                            kind: "primitive",
+                            name: "number",
+                          },
+                          kind: "array",
+                        },
                       },
                     },
+                    kind: "struct",
                   },
                 },
                 "north" => {
                   kind: "option",
                   valueType: {
-                    kind: "enum",
-                    variants: Map(2) {
-                      "option" => {
+                    fields: Map(5) {
+                      "cullface" => {
                         kind: "option",
                         valueType: {
-                          fields: Map(4) {
-                            "cullface" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                  "primitive" => {
-                                    kind: "primitive",
-                                    name: "string",
-                                  },
-                                },
-                              },
-                            },
-                            "texture" => {
-                              kind: "primitive",
-                              name: "string",
-                            },
-                            "tintindex" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                  },
-                                  "primitive" => {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                              },
-                            },
-                            "uv" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "array" => {
-                                    elementType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                    kind: "array",
-                                  },
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      elementType: {
-                                        kind: "primitive",
-                                        name: "number",
-                                      },
-                                      kind: "array",
-                                    },
-                                  },
-                                },
-                              },
-                            },
-                          },
-                          kind: "struct",
+                          kind: "primitive",
+                          name: "string",
                         },
                       },
-                      "struct" => {
-                        fields: Map(5) {
-                          "cullface" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "string",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "string",
-                                },
-                              },
-                            },
-                          },
-                          "rotation" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "primitive",
-                              name: "number",
-                            },
-                          },
-                          "texture" => {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                          "tintindex" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "number",
-                                },
-                              },
-                            },
-                          },
-                          "uv" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "array" => {
-                                  elementType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                  kind: "array",
-                                },
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    elementType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                    kind: "array",
-                                  },
-                                },
-                              },
-                            },
-                          },
+                      "rotation" => {
+                        kind: "option",
+                        valueType: {
+                          kind: "primitive",
+                          name: "number",
                         },
-                        kind: "struct",
+                      },
+                      "texture" => {
+                        kind: "primitive",
+                        name: "string",
+                      },
+                      "tintindex" => {
+                        kind: "option",
+                        valueType: {
+                          kind: "primitive",
+                          name: "number",
+                        },
+                      },
+                      "uv" => {
+                        kind: "option",
+                        valueType: {
+                          elementType: {
+                            kind: "primitive",
+                            name: "number",
+                          },
+                          kind: "array",
+                        },
                       },
                     },
+                    kind: "struct",
                   },
                 },
                 "south" => {
                   kind: "option",
                   valueType: {
-                    kind: "enum",
-                    variants: Map(2) {
-                      "option" => {
+                    fields: Map(5) {
+                      "cullface" => {
                         kind: "option",
                         valueType: {
-                          fields: Map(4) {
-                            "cullface" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                  "primitive" => {
-                                    kind: "primitive",
-                                    name: "string",
-                                  },
-                                },
-                              },
-                            },
-                            "texture" => {
-                              kind: "primitive",
-                              name: "string",
-                            },
-                            "tintindex" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                  },
-                                  "primitive" => {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                              },
-                            },
-                            "uv" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "array" => {
-                                    elementType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                    kind: "array",
-                                  },
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      elementType: {
-                                        kind: "primitive",
-                                        name: "number",
-                                      },
-                                      kind: "array",
-                                    },
-                                  },
-                                },
-                              },
-                            },
-                          },
-                          kind: "struct",
+                          kind: "primitive",
+                          name: "string",
                         },
                       },
-                      "struct" => {
-                        fields: Map(5) {
-                          "cullface" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "string",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "string",
-                                },
-                              },
-                            },
-                          },
-                          "rotation" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "primitive",
-                              name: "number",
-                            },
-                          },
-                          "texture" => {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                          "tintindex" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "number",
-                                },
-                              },
-                            },
-                          },
-                          "uv" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "array" => {
-                                  elementType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                  kind: "array",
-                                },
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    elementType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                    kind: "array",
-                                  },
-                                },
-                              },
-                            },
-                          },
+                      "rotation" => {
+                        kind: "option",
+                        valueType: {
+                          kind: "primitive",
+                          name: "number",
                         },
-                        kind: "struct",
+                      },
+                      "texture" => {
+                        kind: "primitive",
+                        name: "string",
+                      },
+                      "tintindex" => {
+                        kind: "option",
+                        valueType: {
+                          kind: "primitive",
+                          name: "number",
+                        },
+                      },
+                      "uv" => {
+                        kind: "option",
+                        valueType: {
+                          elementType: {
+                            kind: "primitive",
+                            name: "number",
+                          },
+                          kind: "array",
+                        },
                       },
                     },
+                    kind: "struct",
                   },
                 },
                 "up" => {
                   kind: "option",
                   valueType: {
-                    kind: "enum",
-                    variants: Map(2) {
-                      "option" => {
+                    fields: Map(5) {
+                      "cullface" => {
                         kind: "option",
                         valueType: {
-                          fields: Map(5) {
-                            "cullface" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                  "primitive" => {
-                                    kind: "primitive",
-                                    name: "string",
-                                  },
-                                },
-                              },
-                            },
-                            "rotation" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                  },
-                                  "primitive" => {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                              },
-                            },
-                            "texture" => {
-                              kind: "primitive",
-                              name: "string",
-                            },
-                            "tintindex" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                  },
-                                  "primitive" => {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                              },
-                            },
-                            "uv" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "array" => {
-                                    elementType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                    kind: "array",
-                                  },
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      elementType: {
-                                        kind: "primitive",
-                                        name: "number",
-                                      },
-                                      kind: "array",
-                                    },
-                                  },
-                                },
-                              },
-                            },
-                          },
-                          kind: "struct",
+                          kind: "primitive",
+                          name: "string",
                         },
                       },
-                      "struct" => {
-                        fields: Map(5) {
-                          "cullface" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "string",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "string",
-                                },
-                              },
-                            },
-                          },
-                          "rotation" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "number",
-                                },
-                              },
-                            },
-                          },
-                          "texture" => {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                          "tintindex" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "number",
-                                },
-                              },
-                            },
-                          },
-                          "uv" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "array" => {
-                                  elementType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                  kind: "array",
-                                },
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    elementType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                    kind: "array",
-                                  },
-                                },
-                              },
-                            },
-                          },
+                      "rotation" => {
+                        kind: "option",
+                        valueType: {
+                          kind: "primitive",
+                          name: "number",
                         },
-                        kind: "struct",
+                      },
+                      "texture" => {
+                        kind: "primitive",
+                        name: "string",
+                      },
+                      "tintindex" => {
+                        kind: "option",
+                        valueType: {
+                          kind: "primitive",
+                          name: "number",
+                        },
+                      },
+                      "uv" => {
+                        kind: "option",
+                        valueType: {
+                          elementType: {
+                            kind: "primitive",
+                            name: "number",
+                          },
+                          kind: "array",
+                        },
                       },
                     },
+                    kind: "struct",
                   },
                 },
                 "west" => {
                   kind: "option",
                   valueType: {
-                    kind: "enum",
-                    variants: Map(2) {
-                      "option" => {
+                    fields: Map(5) {
+                      "cullface" => {
                         kind: "option",
                         valueType: {
-                          fields: Map(4) {
-                            "cullface" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "string",
-                                    },
-                                  },
-                                  "primitive" => {
-                                    kind: "primitive",
-                                    name: "string",
-                                  },
-                                },
-                              },
-                            },
-                            "texture" => {
-                              kind: "primitive",
-                              name: "string",
-                            },
-                            "tintindex" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                  },
-                                  "primitive" => {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                              },
-                            },
-                            "uv" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "enum",
-                                variants: Map(2) {
-                                  "array" => {
-                                    elementType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                    kind: "array",
-                                  },
-                                  "option" => {
-                                    kind: "option",
-                                    valueType: {
-                                      elementType: {
-                                        kind: "primitive",
-                                        name: "number",
-                                      },
-                                      kind: "array",
-                                    },
-                                  },
-                                },
-                              },
-                            },
-                          },
-                          kind: "struct",
+                          kind: "primitive",
+                          name: "string",
                         },
                       },
-                      "struct" => {
-                        fields: Map(5) {
-                          "cullface" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "string",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "string",
-                                },
-                              },
-                            },
-                          },
-                          "rotation" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "number",
-                                },
-                              },
-                            },
-                          },
-                          "texture" => {
-                            kind: "primitive",
-                            name: "string",
-                          },
-                          "tintindex" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                },
-                                "primitive" => {
-                                  kind: "primitive",
-                                  name: "number",
-                                },
-                              },
-                            },
-                          },
-                          "uv" => {
-                            kind: "option",
-                            valueType: {
-                              kind: "enum",
-                              variants: Map(2) {
-                                "array" => {
-                                  elementType: {
-                                    kind: "primitive",
-                                    name: "number",
-                                  },
-                                  kind: "array",
-                                },
-                                "option" => {
-                                  kind: "option",
-                                  valueType: {
-                                    elementType: {
-                                      kind: "primitive",
-                                      name: "number",
-                                    },
-                                    kind: "array",
-                                  },
-                                },
-                              },
-                            },
-                          },
+                      "rotation" => {
+                        kind: "option",
+                        valueType: {
+                          kind: "primitive",
+                          name: "number",
                         },
-                        kind: "struct",
+                      },
+                      "texture" => {
+                        kind: "primitive",
+                        name: "string",
+                      },
+                      "tintindex" => {
+                        kind: "option",
+                        valueType: {
+                          kind: "primitive",
+                          name: "number",
+                        },
+                      },
+                      "uv" => {
+                        kind: "option",
+                        valueType: {
+                          elementType: {
+                            kind: "primitive",
+                            name: "number",
+                          },
+                          kind: "array",
+                        },
                       },
                     },
+                    kind: "struct",
                   },
                 },
               },
@@ -2447,128 +1487,45 @@ snapshot[`Parse Multiple Files > datapack/models/block 1`] = `
             "name" => {
               kind: "option",
               valueType: {
-                kind: "enum",
-                variants: Map(2) {
-                  "option" => {
-                    kind: "option",
-                    valueType: {
-                      kind: "primitive",
-                      name: "string",
-                    },
-                  },
-                  "primitive" => {
-                    kind: "primitive",
-                    name: "string",
-                  },
-                },
+                kind: "primitive",
+                name: "string",
               },
             },
             "rotation" => {
               kind: "option",
               valueType: {
-                kind: "enum",
-                variants: Map(2) {
-                  "option" => {
-                    kind: "option",
-                    valueType: {
-                      fields: Map(4) {
-                        "angle" => {
-                          kind: "primitive",
-                          name: "number",
-                        },
-                        "axis" => {
-                          kind: "primitive",
-                          name: "string",
-                        },
-                        "origin" => {
-                          elementType: {
-                            kind: "primitive",
-                            name: "number",
-                          },
-                          kind: "array",
-                        },
-                        "rescale" => {
-                          kind: "option",
-                          valueType: {
-                            kind: "enum",
-                            variants: Map(2) {
-                              "option" => {
-                                kind: "option",
-                                valueType: {
-                                  kind: "primitive",
-                                  name: "boolean",
-                                },
-                              },
-                              "primitive" => {
-                                kind: "primitive",
-                                name: "boolean",
-                              },
-                            },
-                          },
-                        },
-                      },
-                      kind: "struct",
-                    },
+                fields: Map(4) {
+                  "angle" => {
+                    kind: "primitive",
+                    name: "number",
                   },
-                  "struct" => {
-                    fields: Map(4) {
-                      "angle" => {
-                        kind: "primitive",
-                        name: "number",
-                      },
-                      "axis" => {
-                        kind: "primitive",
-                        name: "string",
-                      },
-                      "origin" => {
-                        elementType: {
-                          kind: "primitive",
-                          name: "number",
-                        },
-                        kind: "array",
-                      },
-                      "rescale" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "enum",
-                          variants: Map(2) {
-                            "option" => {
-                              kind: "option",
-                              valueType: {
-                                kind: "primitive",
-                                name: "boolean",
-                              },
-                            },
-                            "primitive" => {
-                              kind: "primitive",
-                              name: "boolean",
-                            },
-                          },
-                        },
-                      },
-                    },
-                    kind: "struct",
+                  "axis" => {
+                    kind: "primitive",
+                    name: "string",
                   },
-                },
-              },
-            },
-            "shade" => {
-              kind: "option",
-              valueType: {
-                kind: "enum",
-                variants: Map(2) {
-                  "option" => {
+                  "origin" => {
+                    elementType: {
+                      kind: "primitive",
+                      name: "number",
+                    },
+                    kind: "array",
+                  },
+                  "rescale" => {
                     kind: "option",
                     valueType: {
                       kind: "primitive",
                       name: "boolean",
                     },
                   },
-                  "primitive" => {
-                    kind: "primitive",
-                    name: "boolean",
-                  },
                 },
+                kind: "struct",
+              },
+            },
+            "shade" => {
+              kind: "option",
+              valueType: {
+                kind: "primitive",
+                name: "boolean",
               },
             },
             "to" => {
@@ -3758,11 +2715,8 @@ snapshot[`Parse Multiple Files > datapack/models/item 1`] = `
                 "charged" => {
                   kind: "option",
                   valueType: {
-                    kind: "option",
-                    valueType: {
-                      kind: "primitive",
-                      name: "number",
-                    },
+                    kind: "primitive",
+                    name: "number",
                   },
                 },
                 "filled" => {
@@ -3775,11 +2729,8 @@ snapshot[`Parse Multiple Files > datapack/models/item 1`] = `
                 "firework" => {
                   kind: "option",
                   valueType: {
-                    kind: "option",
-                    valueType: {
-                      kind: "primitive",
-                      name: "number",
-                    },
+                    kind: "primitive",
+                    name: "number",
                   },
                 },
                 "level" => {
@@ -3792,30 +2743,15 @@ snapshot[`Parse Multiple Files > datapack/models/item 1`] = `
                 "pull" => {
                   kind: "option",
                   valueType: {
-                    kind: "option",
-                    valueType: {
-                      kind: "primitive",
-                      name: "number",
-                    },
+                    kind: "primitive",
+                    name: "number",
                   },
                 },
                 "pulling" => {
                   kind: "option",
                   valueType: {
-                    kind: "enum",
-                    variants: Map(2) {
-                      "option" => {
-                        kind: "option",
-                        valueType: {
-                          kind: "primitive",
-                          name: "number",
-                        },
-                      },
-                      "primitive" => {
-                        kind: "primitive",
-                        name: "number",
-                      },
-                    },
+                    kind: "primitive",
+                    name: "number",
                   },
                 },
                 "throwing" => {
@@ -3913,119 +2849,77 @@ snapshot[`Parse Multiple Files > datapack/models/item 1`] = `
 snapshot[`Emit Multiple Files > datapack/blockstates 1`] = `
 "pub struct ArrayElement5 {
   model: String,
-  uvlock: Option<Option<bool>>,
-  weight: Option<Option<f64>>,
-  x: Option<Option<f64>>,
-  y: Option<Option<f64>>,
+  uvlock: Option<bool>,
+  weight: Option<f64>,
+  x: Option<f64>,
+  y: Option<f64>,
 }
-pub enum T28 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub struct Struct19 {
+pub struct Struct15 {
   model: String,
-  uvlock: Option<Option<bool>>,
-  x: Option<Option<f64>>,
-  y: Option<T28>,
+  uvlock: Option<bool>,
+  x: Option<f64>,
+  y: Option<f64>,
 }
 pub enum Apply3 {
   Array(Vec<ArrayElement5>),
-  Struct(Struct19),
+  Struct(Struct15),
 }
-pub struct T35 {
-  east: Option<Option<String>>,
-  has_bottle_0: Option<Option<String>>,
-  has_bottle_1: Option<Option<String>>,
-  has_bottle_2: Option<Option<String>>,
-  level: Option<String>,
-  north: Option<Option<String>>,
-  south: Option<Option<String>>,
-  west: Option<Option<String>>,
+pub struct TElement29 {
+  facing: Option<String>,
+  slot_0_occupied: Option<String>,
+  slot_1_occupied: Option<String>,
+  slot_2_occupied: Option<String>,
+  slot_3_occupied: Option<String>,
+  slot_4_occupied: Option<String>,
+  slot_5_occupied: Option<String>,
 }
 pub struct TElement66 {
+  east: Option<String>,
+  north: Option<String>,
+  south: Option<String>,
+  up: Option<String>,
+  west: Option<String>,
+}
+pub struct T24 {
+  age: Option<String>,
+  AND: Option<Vec<TElement29>>,
+  down: Option<String>,
+  east: Option<String>,
   facing: Option<String>,
-  slot_0_occupied: Option<Option<String>>,
-  slot_1_occupied: Option<Option<String>>,
-  slot_2_occupied: Option<Option<String>>,
-  slot_3_occupied: Option<Option<String>>,
-  slot_4_occupied: Option<Option<String>>,
-  slot_5_occupied: Option<Option<String>>,
-}
-pub enum T94 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum East110 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum North114 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum South118 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum West125 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub struct TElement109 {
-  east: East110,
-  north: North114,
-  south: South118,
-  up: Option<Option<String>>,
-  west: West125,
-}
-pub struct Struct59 {
-  age: Option<Option<String>>,
-  AND: Option<Option<Vec<TElement66>>>,
-  down: Option<Option<String>>,
-  east: Option<Option<String>>,
-  facing: Option<T94>,
   flower_amount: Option<String>,
-  leaves: Option<Option<String>>,
-  north: Option<Option<String>>,
-  OR: Option<Option<Vec<TElement109>>>,
-  south: Option<Option<String>>,
-  up: Option<Option<String>>,
-  west: Option<Option<String>>,
-}
-pub enum T33 {
-  Option(Option<T35>),
-  Struct(Struct59),
+  has_bottle_0: Option<String>,
+  has_bottle_1: Option<String>,
+  has_bottle_2: Option<String>,
+  leaves: Option<String>,
+  level: Option<String>,
+  north: Option<String>,
+  OR: Option<Vec<TElement66>>,
+  south: Option<String>,
+  up: Option<String>,
+  west: Option<String>,
 }
 pub struct TElement2 {
   apply: Apply3,
-  when: Option<T33>,
+  when: Option<T24>,
 }
-pub enum Y147 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub struct ArrayElement142 {
+pub struct ArrayElement87 {
   model: String,
-  x: Option<Option<f64>>,
-  y: Y147,
+  x: Option<f64>,
+  y: Option<f64>,
 }
-pub enum T154 {
-  Option(Option<bool>),
-  Primitive(bool),
-}
-pub struct Struct151 {
+pub struct Struct93 {
   model: String,
-  uvlock: Option<T154>,
-  x: Option<Option<f64>>,
-  y: Option<Option<f64>>,
+  uvlock: Option<bool>,
+  x: Option<f64>,
+  y: Option<f64>,
 }
-pub enum TEntry140 {
-  Array(Vec<ArrayElement142>),
-  Struct(Struct151),
+pub enum TEntry85 {
+  Array(Vec<ArrayElement87>),
+  Struct(Struct93),
 }
 pub struct Root {
   multipart: Option<Vec<TElement2>>,
-  variants: Option<std::collections::HashMap<String, TEntry140>>,
+  variants: Option<std::collections::HashMap<String, TEntry85>>,
 }
 "
 `;
@@ -4081,330 +2975,78 @@ pub struct T3 {
   thirdperson_lefthand: Option<T55>,
   thirdperson_righthand: Option<T63>,
 }
-pub enum T82 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum T87 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T96 {
-  Array(Vec<f64>),
-  Option(Option<Vec<f64>>),
-}
-pub struct T80 {
-  cullface: Option<T82>,
-  rotation: Option<T87>,
-  texture: String,
-  tintindex: Option<Option<f64>>,
-  uv: Option<T96>,
-}
-pub enum T104 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum T109 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T115 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T120 {
-  Array(Vec<f64>),
-  Option(Option<Vec<f64>>),
-}
-pub struct Struct102 {
-  cullface: Option<T104>,
-  rotation: Option<T109>,
-  texture: String,
-  tintindex: Option<T115>,
-  uv: Option<T120>,
-}
-pub enum T78 {
-  Option(Option<T80>),
-  Struct(Struct102),
-}
-pub enum T131 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum T137 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T142 {
-  Array(Vec<f64>),
-  Option(Option<Vec<f64>>),
-}
-pub struct T129 {
-  cullface: Option<T131>,
-  texture: String,
-  tintindex: Option<T137>,
-  uv: Option<T142>,
-}
-pub enum T150 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum T155 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T161 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T166 {
-  Array(Vec<f64>),
-  Option(Option<Vec<f64>>),
-}
-pub struct Struct148 {
-  cullface: Option<T150>,
-  rotation: Option<T155>,
-  texture: String,
-  tintindex: Option<T161>,
-  uv: Option<T166>,
-}
-pub enum T127 {
-  Option(Option<T129>),
-  Struct(Struct148),
-}
-pub enum T177 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum T183 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T188 {
-  Array(Vec<f64>),
-  Option(Option<Vec<f64>>),
-}
-pub struct T175 {
-  cullface: Option<T177>,
-  texture: String,
-  tintindex: Option<T183>,
-  uv: Option<T188>,
-}
-pub enum T196 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum T204 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T209 {
-  Array(Vec<f64>),
-  Option(Option<Vec<f64>>),
-}
-pub struct Struct194 {
-  cullface: Option<T196>,
+pub struct T78 {
+  cullface: Option<String>,
   rotation: Option<f64>,
   texture: String,
-  tintindex: Option<T204>,
-  uv: Option<T209>,
+  tintindex: Option<f64>,
+  uv: Option<Vec<f64>>,
 }
-pub enum T173 {
-  Option(Option<T175>),
-  Struct(Struct194),
-}
-pub enum T220 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum T226 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T231 {
-  Array(Vec<f64>),
-  Option(Option<Vec<f64>>),
-}
-pub struct T218 {
-  cullface: Option<T220>,
-  texture: String,
-  tintindex: Option<T226>,
-  uv: Option<T231>,
-}
-pub enum T239 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum T247 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T252 {
-  Array(Vec<f64>),
-  Option(Option<Vec<f64>>),
-}
-pub struct Struct237 {
-  cullface: Option<T239>,
+pub struct T90 {
+  cullface: Option<String>,
   rotation: Option<f64>,
   texture: String,
-  tintindex: Option<T247>,
-  uv: Option<T252>,
+  tintindex: Option<f64>,
+  uv: Option<Vec<f64>>,
 }
-pub enum T216 {
-  Option(Option<T218>),
-  Struct(Struct237),
-}
-pub enum T263 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum T268 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T274 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T279 {
-  Array(Vec<f64>),
-  Option(Option<Vec<f64>>),
-}
-pub struct T261 {
-  cullface: Option<T263>,
-  rotation: Option<T268>,
+pub struct T102 {
+  cullface: Option<String>,
+  rotation: Option<f64>,
   texture: String,
-  tintindex: Option<T274>,
-  uv: Option<T279>,
+  tintindex: Option<f64>,
+  uv: Option<Vec<f64>>,
 }
-pub enum T287 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum T292 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T298 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T303 {
-  Array(Vec<f64>),
-  Option(Option<Vec<f64>>),
-}
-pub struct Struct285 {
-  cullface: Option<T287>,
-  rotation: Option<T292>,
+pub struct T114 {
+  cullface: Option<String>,
+  rotation: Option<f64>,
   texture: String,
-  tintindex: Option<T298>,
-  uv: Option<T303>,
+  tintindex: Option<f64>,
+  uv: Option<Vec<f64>>,
 }
-pub enum T259 {
-  Option(Option<T261>),
-  Struct(Struct285),
-}
-pub enum T314 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum T320 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T325 {
-  Array(Vec<f64>),
-  Option(Option<Vec<f64>>),
-}
-pub struct T312 {
-  cullface: Option<T314>,
+pub struct T126 {
+  cullface: Option<String>,
+  rotation: Option<f64>,
   texture: String,
-  tintindex: Option<T320>,
-  uv: Option<T325>,
+  tintindex: Option<f64>,
+  uv: Option<Vec<f64>>,
 }
-pub enum T333 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum T338 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T344 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
-pub enum T349 {
-  Array(Vec<f64>),
-  Option(Option<Vec<f64>>),
-}
-pub struct Struct331 {
-  cullface: Option<T333>,
-  rotation: Option<T338>,
+pub struct T138 {
+  cullface: Option<String>,
+  rotation: Option<f64>,
   texture: String,
-  tintindex: Option<T344>,
-  uv: Option<T349>,
-}
-pub enum T310 {
-  Option(Option<T312>),
-  Struct(Struct331),
+  tintindex: Option<f64>,
+  uv: Option<Vec<f64>>,
 }
 pub struct Faces76 {
   down: Option<T78>,
-  east: Option<T127>,
-  north: Option<T173>,
-  south: Option<T216>,
-  up: Option<T259>,
-  west: Option<T310>,
+  east: Option<T90>,
+  north: Option<T102>,
+  south: Option<T114>,
+  up: Option<T126>,
+  west: Option<T138>,
 }
-pub enum T358 {
-  Option(Option<String>),
-  Primitive(String),
-}
-pub enum T371 {
-  Option(Option<bool>),
-  Primitive(bool),
-}
-pub struct T365 {
+pub struct T154 {
   angle: f64,
   axis: String,
   origin: Vec<f64>,
-  rescale: Option<T371>,
-}
-pub enum T381 {
-  Option(Option<bool>),
-  Primitive(bool),
-}
-pub struct Struct375 {
-  angle: f64,
-  axis: String,
-  origin: Vec<f64>,
-  rescale: Option<T381>,
-}
-pub enum T363 {
-  Option(Option<T365>),
-  Struct(Struct375),
-}
-pub enum T386 {
-  Option(Option<bool>),
-  Primitive(bool),
+  rescale: Option<bool>,
 }
 pub struct TElement73 {
   __comment: Option<String>,
   faces: Faces76,
   from: Vec<f64>,
-  name: Option<T358>,
-  rotation: Option<T363>,
-  shade: Option<T386>,
+  name: Option<String>,
+  rotation: Option<T154>,
+  shade: Option<bool>,
   to: Vec<f64>,
 }
-pub struct TElement394 {
+pub struct TElement167 {
   children: Vec<f64>,
   color: f64,
   name: String,
   origin: Vec<f64>,
 }
-pub struct T406 {
+pub struct T179 {
   all: Option<String>,
   amethyst: Option<String>,
   back: Option<String>,
@@ -4502,10 +3144,10 @@ pub struct Root {
   ambientocclusion: Option<bool>,
   display: Option<T3>,
   elements: Option<Vec<TElement73>>,
-  groups: Option<Vec<TElement394>>,
+  groups: Option<Vec<TElement167>>,
   gui_light: Option<String>,
   parent: Option<String>,
-  textures: Option<T406>,
+  textures: Option<T179>,
 }
 "
 `;
@@ -4598,22 +3240,18 @@ pub struct TElement82 {
   from: Vec<f64>,
   to: Vec<f64>,
 }
-pub enum T144 {
-  Option(Option<f64>),
-  Primitive(f64),
-}
 pub struct Predicate119 {
   angle: Option<f64>,
   blocking: Option<f64>,
   broken: Option<f64>,
   brushing: Option<f64>,
   cast: Option<f64>,
-  charged: Option<Option<f64>>,
+  charged: Option<f64>,
   filled: Option<f64>,
-  firework: Option<Option<f64>>,
+  firework: Option<f64>,
   level: Option<f64>,
-  pull: Option<Option<f64>>,
-  pulling: Option<T144>,
+  pull: Option<f64>,
+  pulling: Option<f64>,
   throwing: Option<f64>,
   time: Option<f64>,
   tooting: Option<f64>,
@@ -4623,7 +3261,7 @@ pub struct TElement117 {
   model: String,
   predicate: Predicate119,
 }
-pub struct T159 {
+pub struct T153 {
   layer0: Option<String>,
   layer1: Option<String>,
   layer2: Option<String>,
@@ -4636,7 +3274,7 @@ pub struct Root {
   gui_light: Option<String>,
   overrides: Option<Vec<TElement117>>,
   parent: Option<String>,
-  textures: Option<T159>,
+  textures: Option<T153>,
 }
 "
 `;

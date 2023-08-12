@@ -108,6 +108,10 @@ describe("parseJson", () => {
   it("parses object-8.json", async (ctx) => {
     await run(ctx, "object-8.json");
   });
+
+  it("parses regression-0-option-option.json", async (ctx) => {
+    await run(ctx, "regression-0-option-option.json");
+  });
 });
 
 describe("emitTypes", () => {
@@ -212,6 +216,10 @@ describe("emitTypes", () => {
 
   it("emit object-8.json", async (ctx) => {
     await run(ctx, "object-8.json");
+  });
+
+  it("parses regression-0-option-option.json", async (ctx) => {
+    await run(ctx, "regression-0-option-option.json");
   });
 });
 
