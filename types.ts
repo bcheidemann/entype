@@ -23,7 +23,7 @@ export type StructType = {
 };
 export type UnionType = {
   kind: "union",
-  variants: Map<string, Type>,
+  variants: Map<Type["kind"] | PrimitiveType["name"], Type>,
 };
 export type MapType = {
   kind: "map",

@@ -246,7 +246,7 @@ export function collapseNonHomogeneousTypesImpl(types: Type[]): Type {
   const variants = new Map(
     Object.entries(collectedVariants)
       .filter(([_variant, types]) => types.length > 0)
-      .map(([variant, types]) => [variant, collapseHomogeneousTypes(types)])
+      .map(([variant, types]) => [variant as Type["kind"], collapseHomogeneousTypes(types)])
   );
   return { kind: "union", variants };
 }
@@ -269,13 +269,13 @@ export function collapseStructTypes(types: StructType[]): StructType {
 }
 
 export function collapseUnionTypes(types: UnionType[]): UnionType {
-  const variantNames = new Set<string>();
+  const variantNames = new Set<Type["kind"] | PrimitiveType["name"]>();
   for (const type of types) {
     for (const variantName of type.variants.keys()) {
       variantNames.add(variantName);
     }
   }
-  const variants = new Map<string, Type>();
+  const variants = new Map<Type["kind"] | PrimitiveType["name"], Type>();
   for (const variantName of variantNames) {
     const variantType = collapseTypes(
       types
@@ -306,17 +306,17 @@ export function collapseArrayTypes(types: ArrayType[]): ArrayType {
 }
 
 export function collapsePrimitiveTypes(types: PrimitiveType[]): PrimitiveType | UnionType {
-  const names = new Set<PrimitiveType["name"]>();
+  const uniqueVariants = new Set<PrimitiveType["name"]>();
   for (const type of types) {
-    names.add(type.name);
+    uniqueVariants.add(type.name);
   }
-  if (names.size === 1) {
-    return { kind: "primitive", name: names.values().next().value };
+  if (uniqueVariants.size === 1) {
+    return { kind: "primitive", name: uniqueVariants.values().next().value };
   }
   const variants = new Map(
     Array
-      .from(names.values())
-      .map((name) => [name, { kind: "primitive", name }] as const)
+      .from(uniqueVariants.values())
+      .map((variant) => [variant, { kind: "primitive", name: variant }] as const)
   );
   return { kind: "union", variants };
 }
