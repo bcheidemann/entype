@@ -123,15 +123,6 @@ export function collapseHomogeneousTypes(types: HomogeneousTypeArray): Type {
 }
 
 export function collapseNonHomogeneousTypes(types: Type[]): Type {
-  const type = collapseNonHomogeneousTypesImpl(types);
-  if (isOptionType(type) && isOptionType(type.valueType)) {
-    debugger;
-    collapseNonHomogeneousTypesImpl(types);
-  }
-  return type;
-}
-
-export function collapseNonHomogeneousTypesImpl(types: Type[]): Type {
   const uniqueTypes = new Set<Type["kind"]>(
     types.map((type) => type.kind)
   );
