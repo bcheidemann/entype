@@ -553,18 +553,23 @@ export function emitUnknownType(
   );
 }
 
-export function emitTypes(type: Type) {
+export function emitTypes(
+  type: Type,
+  emitFn?: EmitFn,
+  getTypeNameFn?: GetTypeNameFn,
+) {
   let code = "";
-  const emit = (data: string) => {
+  const emit = ((data: string) => {
+    emitFn?.(data);
     code += data;
-  }
+  });
   let counter = 0;
-  const getTypeName = (name?: string) => {
+  const getTypeName = getTypeNameFn ?? ((name?: string) => {
     const namePrefix = name
       ? removeNumberSuffix(toPascalCase(name))
       : "T";
     return `${namePrefix}${counter++}`;
-  };
+  });
   emitType("Root", type, getTypeName, emit, false);
   return code;
 }
@@ -589,5 +594,16 @@ export function removeNumberSuffix(str: string) {
 }
 
 if (import.meta.main) {
-  console.log('Ok');
+  if (Deno.args.includes("--help") || Deno.args.includes("-h")) {
+    console.log("Usage: deno run --allow-read main.ts <files>");
+    Deno.exit(0);
+  }
+  const types = new Array<Type>();
+  for await (const file of Deno.args) {
+    const json = await Deno.readTextFile(file);
+    const obj = JSON.parse(json) as Json;
+    types.push(parseJson(obj));
+  }
+  const type = collapseTypes(types);
+  emitTypes(type, console.log);
 }
