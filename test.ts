@@ -215,7 +215,36 @@ describe("emitTypes", () => {
   });
 });
 
-describe("Multiple Files", () => {
+describe("Parse Multiple Files", () => {
+  async function run(
+    ctx: Deno.TestContext,
+    directory: string,
+  ) {
+    const files = Deno.readDir(`./fixtures/${directory}`);
+    const types = new Array<Type>();
+    for await (const file of files) {
+      const json = await Deno.readTextFile(`./fixtures/${directory}/${file.name}`);
+      const obj = JSON.parse(json) as Json;
+      types.push(parseJson(obj));
+    }
+    const type = collapseTypes(types);
+    await assertSnapshot(ctx, type);
+  }
+
+  it("datapack/blockstates", async (ctx) => {
+    await run(ctx, "datapack/blockstates");
+  });
+
+  it("datapack/models/block", async (ctx) => {
+    await run(ctx, "datapack/models/block");
+  });
+
+  it("datapack/models/item", async (ctx) => {
+    await run(ctx, "datapack/models/item");
+  });
+});
+
+describe("Emit Multiple Files", () => {
   async function run(
     ctx: Deno.TestContext,
     directory: string,
