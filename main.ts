@@ -1,12 +1,12 @@
 import "npm:@total-typescript/ts-reset";
-import { ArrayType, EnumType, HomogeneousTypeArray, Json, JsonArray, JsonObject, MapType, NullType, OptionType, PrimitiveType, StructType, Type, UnknownType } from "./types.ts";
+import { ArrayType, UnionType, HomogeneousTypeArray, Json, JsonArray, JsonObject, MapType, NullType, OptionType, PrimitiveType, StructType, Type, UnknownType } from "./types.ts";
 
 export function isStructType(type: Type): type is StructType {
   return type.kind === "struct";
 }
 
-export function isEnumType(type: Type): type is EnumType {
-  return type.kind === "enum";
+export function isUnionType(type: Type): type is UnionType {
+  return type.kind === "union";
 }
 
 export function isMapType(type: Type): type is MapType {
@@ -105,8 +105,8 @@ export function collapseHomogeneousTypes(types: HomogeneousTypeArray): Type {
   switch (types[0].kind) {
     case "struct":
       return collapseStructTypes(types as StructType[]);
-    case "enum":
-      return collapseEnumTypes(types as EnumType[]);
+    case "union":
+      return collapseUnionTypes(types as UnionType[]);
     case "map":
       return collapseMapTypes(types as MapType[]);
     case "option":
@@ -151,11 +151,11 @@ export function collapseNonHomogeneousTypesImpl(types: Type[]): Type {
     return { kind: "option", valueType: collapsedType };
   }
 
-  if (uniqueTypes.has("enum")) {
+  if (uniqueTypes.has("union")) {
     return collapseNonHomogeneousTypes(
       types.flatMap((type) => {
         switch (type.kind) {
-          case "enum":
+          case "union":
             return Array.from(type.variants.values());
           default:
             return type;
@@ -198,7 +198,7 @@ export function collapseNonHomogeneousTypesImpl(types: Type[]): Type {
 
   const collectedVariants: {
     struct: StructType[];
-    enum: EnumType[];
+    union: UnionType[];
     map: MapType[];
     option: OptionType[];
     array: ArrayType[];
@@ -207,7 +207,7 @@ export function collapseNonHomogeneousTypesImpl(types: Type[]): Type {
     unknown: UnknownType[];
   } = {
     struct: [],
-    enum: [],
+    union: [],
     map: [],
     option: [],
     array: [],
@@ -220,8 +220,8 @@ export function collapseNonHomogeneousTypesImpl(types: Type[]): Type {
       case "struct":
         collectedVariants.struct.push(type);
         break;
-      case "enum":
-        collectedVariants.enum.push(type);
+      case "union":
+        collectedVariants.union.push(type);
         break;
       case "map":
         collectedVariants.map.push(type);
@@ -248,7 +248,7 @@ export function collapseNonHomogeneousTypesImpl(types: Type[]): Type {
       .filter(([_variant, types]) => types.length > 0)
       .map(([variant, types]) => [variant, collapseHomogeneousTypes(types)])
   );
-  return { kind: "enum", variants };
+  return { kind: "union", variants };
 }
 
 export function collapseStructTypes(types: StructType[]): StructType {
@@ -268,7 +268,7 @@ export function collapseStructTypes(types: StructType[]): StructType {
   return { kind: "struct", fields };
 }
 
-export function collapseEnumTypes(types: EnumType[]): EnumType {
+export function collapseUnionTypes(types: UnionType[]): UnionType {
   const variantNames = new Set<string>();
   for (const type of types) {
     for (const variantName of type.variants.keys()) {
@@ -284,7 +284,7 @@ export function collapseEnumTypes(types: EnumType[]): EnumType {
     );
     variants.set(variantName, variantType);
   }
-  return { kind: "enum", variants };
+  return { kind: "union", variants };
 }
 
 export function collapseMapTypes(types: MapType[]): MapType {
@@ -305,7 +305,7 @@ export function collapseArrayTypes(types: ArrayType[]): ArrayType {
   return { kind: "array", elementType };
 }
 
-export function collapsePrimitiveTypes(types: PrimitiveType[]): PrimitiveType | EnumType {
+export function collapsePrimitiveTypes(types: PrimitiveType[]): PrimitiveType | UnionType {
   const names = new Set<PrimitiveType["name"]>();
   for (const type of types) {
     names.add(type.name);
@@ -318,7 +318,7 @@ export function collapsePrimitiveTypes(types: PrimitiveType[]): PrimitiveType | 
       .from(names.values())
       .map((name) => [name, { kind: "primitive", name }] as const)
   );
-  return { kind: "enum", variants };
+  return { kind: "union", variants };
 }
 
 export function collapseNullTypes(_types: NullType[]): NullType {
@@ -348,8 +348,8 @@ export function emitType(
         emit,
         preferInline,
       );
-    case "enum":
-      return emitEnumType(
+    case "union":
+      return emitUnionType(
         name,
         type,
         getTypeName,
@@ -432,9 +432,9 @@ export function emitStructType(
   );
 }
 
-export function emitEnumType(
+export function emitUnionType(
   name: string,
-  type: EnumType,
+  type: UnionType,
   getTypeName: GetTypeNameFn,
   emit: EmitFn,
   _preferInline: boolean,

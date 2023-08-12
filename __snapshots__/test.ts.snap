@@ -73,10 +73,10 @@ snapshot[`parseJson > parses array-4.json 1`] = `
   elementType: {
     kind: "map",
     valueType: {
-      kind: "enum",
+      kind: "union",
       variants: Map(2) {
         "primitive" => {
-          kind: "enum",
+          kind: "union",
           variants: Map(2) {
             "number" => {
               kind: "primitive",
@@ -279,7 +279,7 @@ snapshot[`parseJson > parses object-7.json 1`] = `
   fields: Map(1) {
     "key" => {
       elementType: {
-        kind: "enum",
+        kind: "union",
         variants: Map(2) {
           "boolean" => {
             kind: "primitive",
@@ -579,7 +579,7 @@ snapshot[`Parse Multiple Files > datapack/blockstates 1`] = `
         elementType: {
           fields: Map(2) {
             "apply" => {
-              kind: "enum",
+              kind: "union",
               variants: Map(2) {
                 "array" => {
                   elementType: {
@@ -876,7 +876,7 @@ snapshot[`Parse Multiple Files > datapack/blockstates 1`] = `
       valueType: {
         kind: "map",
         valueType: {
-          kind: "enum",
+          kind: "union",
           variants: Map(2) {
             "array" => {
               elementType: {

@@ -10,7 +10,7 @@ export type JsonObject = { [key: string]: Json };
 
 export type Type =
   | StructType
-  | EnumType
+  | UnionType
   | MapType
   | OptionType
   | ArrayType
@@ -21,8 +21,8 @@ export type StructType = {
   kind: "struct",
   fields: Map<string, Type>,
 };
-export type EnumType = {
-  kind: "enum",
+export type UnionType = {
+  kind: "union",
   variants: Map<string, Type>,
 };
 export type MapType = {
@@ -49,7 +49,7 @@ export type UnknownType = {
 };
 export type HomogeneousTypeArray =
   | StructType[]
-  | EnumType[]
+  | UnionType[]
   | MapType[]
   | OptionType[]
   | ArrayType[]
