@@ -3,8 +3,8 @@ import {
   it,
 } from "https://deno.land/std@0.198.0/testing/bdd.ts";
 import { assertSnapshot } from "https://deno.land/std@0.198.0/testing/snapshot.ts";
-import { emitTypes, parseJson } from "./main.ts";
-import { Json } from "./types.ts";
+import { collapseTypes, emitTypes, parseJson } from "./main.ts";
+import { Json, Type } from "./types.ts";
 
 describe("parseJson", () => {
   async function run(
@@ -212,6 +212,36 @@ describe("emitTypes", () => {
 
   it("emit object-8.json", async (ctx) => {
     await run(ctx, "object-8.json");
+  });
+});
+
+describe("Multiple Files", () => {
+  async function run(
+    ctx: Deno.TestContext,
+    directory: string,
+  ) {
+    const files = Deno.readDir(`./fixtures/${directory}`);
+    const types = new Array<Type>();
+    for await (const file of files) {
+      const json = await Deno.readTextFile(`./fixtures/${directory}/${file.name}`);
+      const obj = JSON.parse(json) as Json;
+      types.push(parseJson(obj));
+    }
+    const type = collapseTypes(types);
+    const code = emitTypes(type);
+    await assertSnapshot(ctx, code);
+  }
+
+  it("datapack/blockstates", async (ctx) => {
+    await run(ctx, "datapack/blockstates");
+  });
+
+  it("datapack/models/block", async (ctx) => {
+    await run(ctx, "datapack/models/block");
+  });
+
+  it("datapack/models/item", async (ctx) => {
+    await run(ctx, "datapack/models/item");
   });
 });
 

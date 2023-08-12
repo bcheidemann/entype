@@ -517,3 +517,734 @@ pub struct Root {
 }
 "
 `;
+
+snapshot[`Multiple Files > datapack/blockstates 1`] = `
+"pub struct ArrayElement5 {
+  model: String,
+  uvlock: Option<Option<bool>>,
+  weight: Option<Option<f64>>,
+  x: Option<Option<f64>>,
+  y: Option<Option<f64>>,
+}
+pub enum T28 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub struct Struct19 {
+  model: String,
+  uvlock: Option<Option<bool>>,
+  x: Option<Option<f64>>,
+  y: Option<T28>,
+}
+pub enum Apply3 {
+  Array(Vec<ArrayElement5>),
+  Struct(Struct19),
+}
+pub struct T35 {
+  east: Option<Option<String>>,
+  has_bottle_0: Option<Option<String>>,
+  has_bottle_1: Option<Option<String>>,
+  has_bottle_2: Option<Option<String>>,
+  level: Option<String>,
+  north: Option<Option<String>>,
+  south: Option<Option<String>>,
+  west: Option<Option<String>>,
+}
+pub struct TElement66 {
+  facing: Option<String>,
+  slot_0_occupied: Option<Option<String>>,
+  slot_1_occupied: Option<Option<String>>,
+  slot_2_occupied: Option<Option<String>>,
+  slot_3_occupied: Option<Option<String>>,
+  slot_4_occupied: Option<Option<String>>,
+  slot_5_occupied: Option<Option<String>>,
+}
+pub enum T94 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum East110 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum North114 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum South118 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum West125 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub struct TElement109 {
+  east: East110,
+  north: North114,
+  south: South118,
+  up: Option<Option<String>>,
+  west: West125,
+}
+pub struct Struct59 {
+  age: Option<Option<String>>,
+  AND: Option<Option<Vec<TElement66>>>,
+  down: Option<Option<String>>,
+  east: Option<Option<String>>,
+  facing: Option<T94>,
+  flower_amount: Option<String>,
+  leaves: Option<Option<String>>,
+  north: Option<Option<String>>,
+  OR: Option<Option<Vec<TElement109>>>,
+  south: Option<Option<String>>,
+  up: Option<Option<String>>,
+  west: Option<Option<String>>,
+}
+pub enum T33 {
+  Option(Option<T35>),
+  Struct(Struct59),
+}
+pub struct TElement2 {
+  apply: Apply3,
+  when: Option<T33>,
+}
+pub enum Y147 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub struct ArrayElement142 {
+  model: String,
+  x: Option<Option<f64>>,
+  y: Y147,
+}
+pub enum T154 {
+  Option(Option<bool>),
+  Primitive(bool),
+}
+pub struct Struct151 {
+  model: String,
+  uvlock: Option<T154>,
+  x: Option<Option<f64>>,
+  y: Option<Option<f64>>,
+}
+pub enum TEntry140 {
+  Array(Vec<ArrayElement142>),
+  Struct(Struct151),
+}
+pub struct Root {
+  multipart: Option<Vec<TElement2>>,
+  variants: Option<std::collections::HashMap<String, TEntry140>>,
+}
+"
+`;
+
+snapshot[`Multiple Files > datapack/models/block 1`] = `
+"pub struct T5 {
+  rotation: Vec<f64>,
+  scale: Vec<f64>,
+  translation: Vec<f64>,
+}
+pub struct T13 {
+  rotation: Vec<f64>,
+  scale: Vec<f64>,
+  translation: Vec<f64>,
+}
+pub struct T21 {
+  rotation: Vec<f64>,
+  scale: Vec<f64>,
+  translation: Vec<f64>,
+}
+pub struct T29 {
+  rotation: Vec<f64>,
+  scale: Vec<f64>,
+  translation: Vec<f64>,
+}
+pub struct T37 {
+  rotation: Vec<f64>,
+  scale: Vec<f64>,
+  translation: Vec<f64>,
+}
+pub struct T45 {
+  rotation: Option<Vec<f64>>,
+  scale: Option<Vec<f64>>,
+  translation: Vec<f64>,
+}
+pub struct T55 {
+  rotation: Vec<f64>,
+  scale: Vec<f64>,
+  translation: Vec<f64>,
+}
+pub struct T63 {
+  rotation: Option<Vec<f64>>,
+  scale: Vec<f64>,
+  translation: Vec<f64>,
+}
+pub struct T3 {
+  firstperson_lefthand: Option<T5>,
+  firstperson_righthand: Option<T13>,
+  fixed: Option<T21>,
+  ground: Option<T29>,
+  gui: Option<T37>,
+  head: Option<T45>,
+  thirdperson_lefthand: Option<T55>,
+  thirdperson_righthand: Option<T63>,
+}
+pub enum T82 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum T87 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T96 {
+  Array(Vec<f64>),
+  Option(Option<Vec<f64>>),
+}
+pub struct T80 {
+  cullface: Option<T82>,
+  rotation: Option<T87>,
+  texture: String,
+  tintindex: Option<Option<f64>>,
+  uv: Option<T96>,
+}
+pub enum T104 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum T109 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T115 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T120 {
+  Array(Vec<f64>),
+  Option(Option<Vec<f64>>),
+}
+pub struct Struct102 {
+  cullface: Option<T104>,
+  rotation: Option<T109>,
+  texture: String,
+  tintindex: Option<T115>,
+  uv: Option<T120>,
+}
+pub enum T78 {
+  Option(Option<T80>),
+  Struct(Struct102),
+}
+pub enum T131 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum T137 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T142 {
+  Array(Vec<f64>),
+  Option(Option<Vec<f64>>),
+}
+pub struct T129 {
+  cullface: Option<T131>,
+  texture: String,
+  tintindex: Option<T137>,
+  uv: Option<T142>,
+}
+pub enum T150 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum T155 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T161 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T166 {
+  Array(Vec<f64>),
+  Option(Option<Vec<f64>>),
+}
+pub struct Struct148 {
+  cullface: Option<T150>,
+  rotation: Option<T155>,
+  texture: String,
+  tintindex: Option<T161>,
+  uv: Option<T166>,
+}
+pub enum T127 {
+  Option(Option<T129>),
+  Struct(Struct148),
+}
+pub enum T177 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum T183 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T188 {
+  Array(Vec<f64>),
+  Option(Option<Vec<f64>>),
+}
+pub struct T175 {
+  cullface: Option<T177>,
+  texture: String,
+  tintindex: Option<T183>,
+  uv: Option<T188>,
+}
+pub enum T196 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum T204 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T209 {
+  Array(Vec<f64>),
+  Option(Option<Vec<f64>>),
+}
+pub struct Struct194 {
+  cullface: Option<T196>,
+  rotation: Option<f64>,
+  texture: String,
+  tintindex: Option<T204>,
+  uv: Option<T209>,
+}
+pub enum T173 {
+  Option(Option<T175>),
+  Struct(Struct194),
+}
+pub enum T220 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum T226 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T231 {
+  Array(Vec<f64>),
+  Option(Option<Vec<f64>>),
+}
+pub struct T218 {
+  cullface: Option<T220>,
+  texture: String,
+  tintindex: Option<T226>,
+  uv: Option<T231>,
+}
+pub enum T239 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum T247 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T252 {
+  Array(Vec<f64>),
+  Option(Option<Vec<f64>>),
+}
+pub struct Struct237 {
+  cullface: Option<T239>,
+  rotation: Option<f64>,
+  texture: String,
+  tintindex: Option<T247>,
+  uv: Option<T252>,
+}
+pub enum T216 {
+  Option(Option<T218>),
+  Struct(Struct237),
+}
+pub enum T263 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum T268 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T274 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T279 {
+  Array(Vec<f64>),
+  Option(Option<Vec<f64>>),
+}
+pub struct T261 {
+  cullface: Option<T263>,
+  rotation: Option<T268>,
+  texture: String,
+  tintindex: Option<T274>,
+  uv: Option<T279>,
+}
+pub enum T287 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum T292 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T298 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T303 {
+  Array(Vec<f64>),
+  Option(Option<Vec<f64>>),
+}
+pub struct Struct285 {
+  cullface: Option<T287>,
+  rotation: Option<T292>,
+  texture: String,
+  tintindex: Option<T298>,
+  uv: Option<T303>,
+}
+pub enum T259 {
+  Option(Option<T261>),
+  Struct(Struct285),
+}
+pub enum T314 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum T320 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T325 {
+  Array(Vec<f64>),
+  Option(Option<Vec<f64>>),
+}
+pub struct T312 {
+  cullface: Option<T314>,
+  texture: String,
+  tintindex: Option<T320>,
+  uv: Option<T325>,
+}
+pub enum T333 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum T338 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T344 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub enum T349 {
+  Array(Vec<f64>),
+  Option(Option<Vec<f64>>),
+}
+pub struct Struct331 {
+  cullface: Option<T333>,
+  rotation: Option<T338>,
+  texture: String,
+  tintindex: Option<T344>,
+  uv: Option<T349>,
+}
+pub enum T310 {
+  Option(Option<T312>),
+  Struct(Struct331),
+}
+pub struct Faces76 {
+  down: Option<T78>,
+  east: Option<T127>,
+  north: Option<T173>,
+  south: Option<T216>,
+  up: Option<T259>,
+  west: Option<T310>,
+}
+pub enum T358 {
+  Option(Option<String>),
+  Primitive(String),
+}
+pub enum T371 {
+  Option(Option<bool>),
+  Primitive(bool),
+}
+pub struct T365 {
+  angle: f64,
+  axis: String,
+  origin: Vec<f64>,
+  rescale: Option<T371>,
+}
+pub enum T381 {
+  Option(Option<bool>),
+  Primitive(bool),
+}
+pub struct Struct375 {
+  angle: f64,
+  axis: String,
+  origin: Vec<f64>,
+  rescale: Option<T381>,
+}
+pub enum T363 {
+  Option(Option<T365>),
+  Struct(Struct375),
+}
+pub enum T386 {
+  Option(Option<bool>),
+  Primitive(bool),
+}
+pub struct TElement73 {
+  __comment: Option<String>,
+  faces: Faces76,
+  from: Vec<f64>,
+  name: Option<T358>,
+  rotation: Option<T363>,
+  shade: Option<T386>,
+  to: Vec<f64>,
+}
+pub struct TElement394 {
+  children: Vec<f64>,
+  color: f64,
+  name: String,
+  origin: Vec<f64>,
+}
+pub struct T406 {
+  all: Option<String>,
+  amethyst: Option<String>,
+  back: Option<String>,
+  bamboo: Option<String>,
+  bar: Option<String>,
+  bars: Option<String>,
+  base: Option<String>,
+  beacon: Option<String>,
+  body: Option<String>,
+  bottom: Option<String>,
+  cactus: Option<String>,
+  cactus_top: Option<String>,
+  calibrated_side: Option<String>,
+  candle: Option<String>,
+  cocoa: Option<String>,
+  content: Option<String>,
+  crop: Option<String>,
+  cross: Option<String>,
+  dirt: Option<String>,
+  down: Option<String>,
+  east: Option<String>,
+  edge: Option<String>,
+  end: Option<String>,
+  end_rod: Option<String>,
+  eye: Option<String>,
+  fan: Option<String>,
+  fire: Option<String>,
+  flower: Option<String>,
+  flowerbed: Option<String>,
+  flowerpot: Option<String>,
+  front: Option<String>,
+  glass: Option<String>,
+  glow_lichen: Option<String>,
+  hook: Option<String>,
+  inner_top: Option<String>,
+  inside: Option<String>,
+  lantern: Option<String>,
+  leaf: Option<String>,
+  leg: Option<String>,
+  lever: Option<String>,
+  line: Option<String>,
+  lit: Option<String>,
+  lit_log: Option<String>,
+  lock: Option<String>,
+  log: Option<String>,
+  north: Option<String>,
+  obsidian: Option<String>,
+  overlay: Option<String>,
+  pane: Option<String>,
+  particle: Option<String>,
+  pattern: Option<String>,
+  pitcher_bottom: Option<String>,
+  pitcher_side: Option<String>,
+  pitcher_top: Option<String>,
+  pivot: Option<String>,
+  plant: Option<String>,
+  platform: Option<String>,
+  portal: Option<String>,
+  post: Option<String>,
+  propagule: Option<String>,
+  rail: Option<String>,
+  round: Option<String>,
+  sapling: Option<String>,
+  saw: Option<String>,
+  sculk_vein: Option<String>,
+  side: Option<String>,
+  sides: Option<String>,
+  slab: Option<String>,
+  south: Option<String>,
+  stage_1: Option<String>,
+  stage_2: Option<String>,
+  stage_3_bottom: Option<String>,
+  stage_3_top: Option<String>,
+  stage_4_bottom: Option<String>,
+  stage_4_top: Option<String>,
+  stand: Option<String>,
+  stem: Option<String>,
+  tendrils: Option<String>,
+  texture: Option<String>,
+  tip: Option<String>,
+  top: Option<String>,
+  torch: Option<String>,
+  tripwire: Option<String>,
+  unlit: Option<String>,
+  unsticky: Option<String>,
+  up: Option<String>,
+  upperstem: Option<String>,
+  vine: Option<String>,
+  wall: Option<String>,
+  west: Option<String>,
+  wood: Option<String>,
+  wool: Option<String>,
+}
+pub struct Root {
+  ambientocclusion: Option<bool>,
+  display: Option<T3>,
+  elements: Option<Vec<TElement73>>,
+  groups: Option<Vec<TElement394>>,
+  gui_light: Option<String>,
+  parent: Option<String>,
+  textures: Option<T406>,
+}
+"
+`;
+
+snapshot[`Multiple Files > datapack/models/item 1`] = `
+"pub struct T3 {
+  rotation: Vec<f64>,
+  scale: Option<Vec<f64>>,
+  translation: Vec<f64>,
+}
+pub struct T12 {
+  rotation: Vec<f64>,
+  scale: Option<Vec<f64>>,
+  translation: Vec<f64>,
+}
+pub struct T21 {
+  rotation: Option<Vec<f64>>,
+  scale: Option<Vec<f64>>,
+  translation: Option<Vec<f64>>,
+}
+pub struct T32 {
+  rotation: Vec<f64>,
+  scale: Option<Vec<f64>>,
+  translation: Option<Vec<f64>>,
+}
+pub struct T42 {
+  rotation: Option<Vec<f64>>,
+  scale: Option<Vec<f64>>,
+  translation: Option<Vec<f64>>,
+}
+pub struct T53 {
+  rotation: Option<Vec<f64>>,
+  scale: Option<Vec<f64>>,
+  translation: Vec<f64>,
+}
+pub struct T63 {
+  rotation: Vec<f64>,
+  scale: Vec<f64>,
+  translation: Vec<f64>,
+}
+pub struct T71 {
+  rotation: Option<Vec<f64>>,
+  scale: Option<Vec<f64>>,
+  translation: Vec<f64>,
+}
+pub struct T1 {
+  firstperson_lefthand: Option<T3>,
+  firstperson_righthand: Option<T12>,
+  fixed: Option<T21>,
+  ground: Option<T32>,
+  gui: Option<T42>,
+  head: Option<T53>,
+  thirdperson_lefthand: Option<T63>,
+  thirdperson_righthand: Option<T71>,
+}
+pub struct T85 {
+  texture: String,
+  uv: Vec<f64>,
+}
+pub struct East89 {
+  texture: String,
+  uv: Vec<f64>,
+}
+pub struct North93 {
+  texture: String,
+  uv: Vec<f64>,
+}
+pub struct South97 {
+  texture: String,
+  uv: Vec<f64>,
+}
+pub struct Up101 {
+  texture: String,
+  uv: Vec<f64>,
+}
+pub struct West105 {
+  texture: String,
+  uv: Vec<f64>,
+}
+pub struct Faces83 {
+  down: Option<T85>,
+  east: East89,
+  north: North93,
+  south: South97,
+  up: Up101,
+  west: West105,
+}
+pub struct TElement82 {
+  faces: Faces83,
+  from: Vec<f64>,
+  to: Vec<f64>,
+}
+pub enum T144 {
+  Option(Option<f64>),
+  Primitive(f64),
+}
+pub struct Predicate119 {
+  angle: Option<f64>,
+  blocking: Option<f64>,
+  broken: Option<f64>,
+  brushing: Option<f64>,
+  cast: Option<f64>,
+  charged: Option<Option<f64>>,
+  filled: Option<f64>,
+  firework: Option<Option<f64>>,
+  level: Option<f64>,
+  pull: Option<Option<f64>>,
+  pulling: Option<T144>,
+  throwing: Option<f64>,
+  time: Option<f64>,
+  tooting: Option<f64>,
+  trim_type: Option<f64>,
+}
+pub struct TElement117 {
+  model: String,
+  predicate: Predicate119,
+}
+pub struct T159 {
+  layer0: Option<String>,
+  layer1: Option<String>,
+  layer2: Option<String>,
+  particle: Option<String>,
+  spyglass: Option<String>,
+}
+pub struct Root {
+  display: Option<T1>,
+  elements: Option<Vec<TElement82>>,
+  gui_light: Option<String>,
+  overrides: Option<Vec<TElement117>>,
+  parent: Option<String>,
+  textures: Option<T159>,
+}
+"
+`;
