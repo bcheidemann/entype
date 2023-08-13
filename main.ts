@@ -25,6 +25,11 @@ async function main(args: string[]): Promise<0 | 1> {
     return 0;
   }
 
+  if ("version" in config) {
+    console.log("1.0.1");
+    return 0;
+  }
+
   if ("lang" in config) {
     let exitStatusCode: 0 | 1 = 0;
 

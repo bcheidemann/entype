@@ -21,6 +21,12 @@ export function parseLangArgs(context: ParseLangArgsContext): Config {
       case "--lang":
       case "-l":
         return parseLangArg(context);
+      case "--help":
+      case "-h":
+        return parseHelpArg(context);
+      case "--version":
+      case "-v":
+        return parseVersionArg(context);
       default:
         return parseFileArg(context, arg);
     }
@@ -55,6 +61,23 @@ export function parseLangArg(
           `Unknown language specified at position ${context.previousPosition}: ${lang}`,
       };
   }
+}
+
+export function parseHelpArg(
+  _context: ParseLangArgsContext,
+): Config {
+  return {
+    help: true,
+    invalidArgs: false,
+  };
+}
+
+export function parseVersionArg(
+  _context: ParseLangArgsContext,
+): Config {
+  return {
+    version: true,
+  };
 }
 
 export function parseFileArg(

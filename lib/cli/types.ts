@@ -6,6 +6,10 @@ export type HelpConfig = {
   message?: string;
 };
 
+export type VersionConfig = {
+  version: true;
+};
+
 export type LangConfig = {
   lang: Lang;
   files: string[];
@@ -13,4 +17,5 @@ export type LangConfig = {
 
 export type Config =
   | HelpConfig
+  | VersionConfig
   | LangConfig;
