@@ -1,13 +1,10 @@
 import "npm:@total-typescript/ts-reset";
-import {
-  describe,
-  it,
-} from "https://deno.land/std@0.198.0/testing/bdd.ts";
+import { describe, it } from "https://deno.land/std@0.198.0/testing/bdd.ts";
 import { assertSnapshot } from "https://deno.land/std@0.198.0/testing/snapshot.ts";
 import { collapseTypes } from "./lib/collapse-types.ts";
 import { emitTypes } from "./lib/emit/rust.ts";
 import { parseJson } from "./lib/parse.ts";
-import { Json,Type } from "./lib/types.ts";
+import { Json, Type } from "./lib/types.ts";
 
 describe("parseJson", () => {
   async function run(
@@ -234,7 +231,9 @@ describe("Parse Multiple Files", () => {
     const files = Deno.readDir(`./fixtures/${directory}`);
     const types = new Array<Type>();
     for await (const file of files) {
-      const json = await Deno.readTextFile(`./fixtures/${directory}/${file.name}`);
+      const json = await Deno.readTextFile(
+        `./fixtures/${directory}/${file.name}`,
+      );
       const obj = JSON.parse(json) as Json;
       types.push(parseJson(obj));
     }
@@ -263,7 +262,9 @@ describe("Emit Multiple Files", () => {
     const files = Deno.readDir(`./fixtures/${directory}`);
     const types = new Array<Type>();
     for await (const file of files) {
-      const json = await Deno.readTextFile(`./fixtures/${directory}/${file.name}`);
+      const json = await Deno.readTextFile(
+        `./fixtures/${directory}/${file.name}`,
+      );
       const obj = JSON.parse(json) as Json;
       types.push(parseJson(obj));
     }
@@ -284,4 +285,3 @@ describe("Emit Multiple Files", () => {
     await run(ctx, "datapack/models/item");
   });
 });
-

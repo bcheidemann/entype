@@ -1,6 +1,6 @@
 {
-    "ambientocclusion": false,
-    "textures": {
-        "particle": "block/pitcher_crop_top"
-    }
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "block/pitcher_crop_top"
+  }
 }

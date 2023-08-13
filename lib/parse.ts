@@ -37,7 +37,7 @@ export function parseJsonObject(obj: JsonObject): Type {
   const fields = new Map(
     Object
       .entries(obj)
-      .map(([key, value]) => [key, parseJson(value)])
+      .map(([key, value]) => [key, parseJson(value)]),
   );
   const isMap = !Array
     .from(fields.keys())

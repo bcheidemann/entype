@@ -1,5 +1,20 @@
-import { isNullType,isMapType, isHomogeneousTypeArray } from "./type-guards.ts";
-import { ArrayType, HomogeneousTypeArray, MapType, NullType, OptionType, PrimitiveType, StructType, Type, UnionType, UnknownType } from "./types.ts";
+import {
+  isHomogeneousTypeArray,
+  isMapType,
+  isNullType,
+} from "./type-guards.ts";
+import {
+  ArrayType,
+  HomogeneousTypeArray,
+  MapType,
+  NullType,
+  OptionType,
+  PrimitiveType,
+  StructType,
+  Type,
+  UnionType,
+  UnknownType,
+} from "./types.ts";
 
 export function collapseTypes(types: Type[]): Type {
   if (types.length === 0) {
@@ -36,7 +51,7 @@ export function collapseHomogeneousTypes(types: HomogeneousTypeArray): Type {
 
 export function collapseNonHomogeneousTypes(types: Type[]): Type {
   const uniqueTypes = new Set<Type["kind"]>(
-    types.map((type) => type.kind)
+    types.map((type) => type.kind),
   );
 
   if (uniqueTypes.has("option")) {
@@ -63,7 +78,7 @@ export function collapseNonHomogeneousTypes(types: Type[]): Type {
           default:
             return type;
         }
-      })
+      }),
     );
   }
 
@@ -87,7 +102,7 @@ export function collapseNonHomogeneousTypes(types: Type[]): Type {
           default:
             return type;
         }
-      })
+      }),
     );
   }
 
@@ -149,7 +164,9 @@ export function collapseNonHomogeneousTypes(types: Type[]): Type {
   const variants = new Map(
     Object.entries(collectedVariants)
       .filter(([_variant, types]) => types.length > 0)
-      .map(([variant, types]) => [variant as Type["kind"], collapseHomogeneousTypes(types)])
+      .map((
+        [variant, types],
+      ) => [variant as Type["kind"], collapseHomogeneousTypes(types)]),
   );
   return { kind: "union", variants };
 }
@@ -164,7 +181,7 @@ export function collapseStructTypes(types: StructType[]): StructType {
   const fields = new Map<string, Type>();
   for (const key of keys) {
     const fieldType = collapseTypes(
-      types.map((type) => type.fields.get(key) ?? { kind: "null" })
+      types.map((type) => type.fields.get(key) ?? { kind: "null" }),
     );
     fields.set(key, fieldType);
   }
@@ -183,7 +200,7 @@ export function collapseUnionTypes(types: UnionType[]): UnionType {
     const variantType = collapseTypes(
       types
         .map((type) => type.variants.get(variantName))
-        .filter(Boolean)
+        .filter(Boolean),
     );
     variants.set(variantName, variantType);
   }
@@ -208,7 +225,9 @@ export function collapseArrayTypes(types: ArrayType[]): ArrayType {
   return { kind: "array", elementType };
 }
 
-export function collapsePrimitiveTypes(types: PrimitiveType[]): PrimitiveType | UnionType {
+export function collapsePrimitiveTypes(
+  types: PrimitiveType[],
+): PrimitiveType | UnionType {
   const uniqueVariants = new Set<PrimitiveType["name"]>();
   for (const type of types) {
     uniqueVariants.add(type.name);
@@ -219,7 +238,9 @@ export function collapsePrimitiveTypes(types: PrimitiveType[]): PrimitiveType | 
   const variants = new Map(
     Array
       .from(uniqueVariants.values())
-      .map((variant) => [variant, { kind: "primitive", name: variant }] as const)
+      .map((variant) =>
+        [variant, { kind: "primitive", name: variant }] as const
+      ),
   );
   return { kind: "union", variants };
 }

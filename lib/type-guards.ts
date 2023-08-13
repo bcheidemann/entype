@@ -1,4 +1,15 @@
-import { ArrayType, UnionType, HomogeneousTypeArray, MapType, NullType, OptionType, PrimitiveType, StructType, Type, UnknownType } from "./types.ts";
+import {
+  ArrayType,
+  HomogeneousTypeArray,
+  MapType,
+  NullType,
+  OptionType,
+  PrimitiveType,
+  StructType,
+  Type,
+  UnionType,
+  UnknownType,
+} from "./types.ts";
 
 export function isStructType(type: Type): type is StructType {
   return type.kind === "struct";
@@ -32,6 +43,8 @@ export function isUnknownType(type: Type): type is UnknownType {
   return type.kind === "unknown";
 }
 
-export function isHomogeneousTypeArray(types: Type[]): types is HomogeneousTypeArray {
+export function isHomogeneousTypeArray(
+  types: Type[],
+): types is HomogeneousTypeArray {
   return types.every((type) => type.kind === types[0].kind);
 }

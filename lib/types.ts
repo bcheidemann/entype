@@ -18,34 +18,34 @@ export type Type =
   | NullType
   | UnknownType;
 export type StructType = {
-  kind: "struct",
-  fields: Map<string, Type>,
+  kind: "struct";
+  fields: Map<string, Type>;
 };
 export type UnionType = {
-  kind: "union",
-  variants: Map<Type["kind"] | PrimitiveType["name"], Type>,
+  kind: "union";
+  variants: Map<Type["kind"] | PrimitiveType["name"], Type>;
 };
 export type MapType = {
-  kind: "map",
-  valueType: Type,
+  kind: "map";
+  valueType: Type;
 };
 export type OptionType = {
-  kind: "option",
-  valueType: Type,
+  kind: "option";
+  valueType: Type;
 };
 export type ArrayType = {
-  kind: "array",
-  elementType: Type,
+  kind: "array";
+  elementType: Type;
 };
 export type PrimitiveType = {
-  kind: "primitive",
-  name: "string" | "number" | "boolean",
+  kind: "primitive";
+  name: "string" | "number" | "boolean";
 };
 export type NullType = {
-  kind: "null",
+  kind: "null";
 };
 export type UnknownType = {
-  kind: "unknown",
+  kind: "unknown";
 };
 export type HomogeneousTypeArray =
   | StructType[]

@@ -1,5 +1,17 @@
-import { Type,StructType,UnionType,MapType,OptionType,ArrayType,PrimitiveType,NullType,UnknownType, GetTypeNameFn, EmitFn } from "../types.ts";
-import { toPascalCase,removeNumberSuffix } from "../util.ts";
+import {
+  ArrayType,
+  EmitFn,
+  GetTypeNameFn,
+  MapType,
+  NullType,
+  OptionType,
+  PrimitiveType,
+  StructType,
+  Type,
+  UnionType,
+  UnknownType,
+} from "../types.ts";
+import { removeNumberSuffix, toPascalCase } from "../util.ts";
 
 export function emitType(
   name: string,
@@ -97,7 +109,7 @@ export function emitStructType(
       ...fields,
       "}",
       "",
-    ].join("\n")
+    ].join("\n"),
   );
 }
 
@@ -122,7 +134,7 @@ export function emitUnionType(
       ...variants,
       "}",
       "",
-    ].join("\n")
+    ].join("\n"),
   );
 }
 
@@ -134,8 +146,16 @@ export function emitMapType(
   preferInline: boolean,
 ) {
   const typeName = getTypeName(`${removeNumberSuffix(name)}Entry`);
-  const innerInlineType = emitType(typeName, type.valueType, getTypeName, emit, true);
-  const inlineType = `std::collections::HashMap<String, ${innerInlineType ?? typeName}>`;
+  const innerInlineType = emitType(
+    typeName,
+    type.valueType,
+    getTypeName,
+    emit,
+    true,
+  );
+  const inlineType = `std::collections::HashMap<String, ${
+    innerInlineType ?? typeName
+  }>`;
   if (preferInline) {
     return inlineType;
   }
@@ -143,7 +163,7 @@ export function emitMapType(
     [
       `pub type ${name} = ${inlineType};`,
       "",
-    ].join("\n")
+    ].join("\n"),
   );
 }
 
@@ -155,7 +175,13 @@ export function emitOptionType(
   preferInline: boolean,
 ) {
   const typeName = getTypeName();
-  const innerInlineType = emitType(typeName, type.valueType, getTypeName, emit, true);
+  const innerInlineType = emitType(
+    typeName,
+    type.valueType,
+    getTypeName,
+    emit,
+    true,
+  );
   const inlineType = `Option<${innerInlineType ?? typeName}>`;
   if (preferInline) {
     return inlineType;
@@ -164,7 +190,7 @@ export function emitOptionType(
     [
       `pub type ${name} = ${inlineType};`,
       "",
-    ].join("\n")
+    ].join("\n"),
   );
 }
 
@@ -176,7 +202,13 @@ export function emitArrayType(
   preferInline: boolean,
 ) {
   const typeName = getTypeName(`${removeNumberSuffix(name)}Element`);
-  const innerInlineType = emitType(typeName, type.elementType, getTypeName, emit, true);
+  const innerInlineType = emitType(
+    typeName,
+    type.elementType,
+    getTypeName,
+    emit,
+    true,
+  );
   const inlineType = `Vec<${innerInlineType ?? typeName}>`;
   if (preferInline) {
     return inlineType;
@@ -185,7 +217,7 @@ export function emitArrayType(
     [
       `pub type ${name} = ${inlineType};`,
       "",
-    ].join("\n")
+    ].join("\n"),
   );
 }
 
@@ -204,7 +236,7 @@ export function emitPrimitiveType(
     [
       `pub type ${name} = ${inlineType};`,
       "",
-    ].join("\n")
+    ].join("\n"),
   );
 }
 
@@ -223,7 +255,7 @@ export function emitNullType(
     [
       `pub type ${name} = ${inlineType};`,
       "",
-    ].join("\n")
+    ].join("\n"),
   );
 }
 
@@ -242,7 +274,7 @@ export function emitUnknownType(
     [
       `pub type ${name} = ${inlineType};`,
       "",
-    ].join("\n")
+    ].join("\n"),
   );
 }
 
@@ -252,15 +284,13 @@ export function emitTypes(
   getTypeNameFn?: GetTypeNameFn,
 ) {
   let code = "";
-  const emit = ((data: string) => {
+  const emit = (data: string) => {
     emitFn?.(data);
     code += data;
-  });
+  };
   let counter = 0;
   const getTypeName = getTypeNameFn ?? ((name?: string) => {
-    const namePrefix = name
-      ? removeNumberSuffix(toPascalCase(name))
-      : "T";
+    const namePrefix = name ? removeNumberSuffix(toPascalCase(name)) : "T";
     return `${namePrefix}${counter++}`;
   });
   emitType("Root", type, getTypeName, emit, false);

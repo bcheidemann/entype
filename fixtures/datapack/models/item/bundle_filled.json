@@ -1,6 +1,6 @@
 {
-    "parent": "item/bundle",
-    "textures": {
-        "layer0": "item/bundle_filled"
-    }
+  "parent": "item/bundle",
+  "textures": {
+    "layer0": "item/bundle_filled"
+  }
 }
