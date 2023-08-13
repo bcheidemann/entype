@@ -18,6 +18,12 @@
         "--allow-all"
       ],
       "attachSimplePort": 9229
+    },
+    {
+      "request": "attach",
+      "name": "Attach",
+      "type": "node",
+      "port": 9229
     }
   ]
 }
