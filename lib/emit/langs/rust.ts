@@ -1,7 +1,5 @@
 import {
   ArrayType,
-  EmitFn,
-  GetTypeNameFn,
   MapType,
   NullType,
   OptionType,
@@ -10,7 +8,8 @@ import {
   Type,
   UnionType,
   UnknownType,
-} from "../types.ts";
+} from "../../types.ts";
+import { EmitFn, GetTypeNameFn } from "../types.ts";
 import { removeNumberSuffix, toPascalCase } from "../util.ts";
 
 export function emitType(
@@ -276,25 +275,6 @@ export function emitUnknownType(
       "",
     ].join("\n"),
   );
-}
-
-export function emitTypes(
-  type: Type,
-  emitFn?: EmitFn,
-  getTypeNameFn?: GetTypeNameFn,
-) {
-  let code = "";
-  const emit = (data: string) => {
-    emitFn?.(data);
-    code += data;
-  };
-  let counter = 0;
-  const getTypeName = getTypeNameFn ?? ((name?: string) => {
-    const namePrefix = name ? removeNumberSuffix(toPascalCase(name)) : "T";
-    return `${namePrefix}${counter++}`;
-  });
-  emitType("Root", type, getTypeName, emit, false);
-  return code;
 }
 
 export function getPrimitiveName(primitive: PrimitiveType["name"]) {

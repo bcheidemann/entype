@@ -2,7 +2,7 @@ import "npm:@total-typescript/ts-reset";
 import { Json, Type } from "./lib/types.ts";
 import { parseJson } from "./lib/parse.ts";
 import { collapseTypes } from "./lib/collapse-types.ts";
-import { emitTypes } from "./lib/emit/rust.ts";
+import { emitRootType } from "./lib/emit/mod.ts";
 
 if (import.meta.main) {
   if (Deno.args.includes("--help") || Deno.args.includes("-h")) {
@@ -16,5 +16,5 @@ if (import.meta.main) {
     types.push(parseJson(obj));
   }
   const type = collapseTypes(types);
-  emitTypes(type, console.log);
+  emitRootType("rust", type, console.log);
 }

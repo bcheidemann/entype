@@ -2,9 +2,9 @@ import "npm:@total-typescript/ts-reset";
 import { describe, it } from "https://deno.land/std@0.198.0/testing/bdd.ts";
 import { assertSnapshot } from "https://deno.land/std@0.198.0/testing/snapshot.ts";
 import { collapseTypes } from "./lib/collapse-types.ts";
-import { emitTypes } from "./lib/emit/rust.ts";
 import { parseJson } from "./lib/parse.ts";
 import { Json, Type } from "./lib/types.ts";
+import { emitRootTypeToString } from "./lib/emit/mod.ts";
 
 describe("parseJson", () => {
   async function run(
@@ -122,7 +122,7 @@ describe("emitTypes", () => {
     const json = await Deno.readTextFile(`./fixtures/${filename}`);
     const obj = JSON.parse(json) as Json;
     const type = parseJson(obj);
-    const code = emitTypes(type);
+    const code = await emitRootTypeToString("rust", type);
     await assertSnapshot(ctx, code);
   }
 
@@ -269,7 +269,7 @@ describe("Emit Multiple Files", () => {
       types.push(parseJson(obj));
     }
     const type = collapseTypes(types);
-    const code = emitTypes(type);
+    const code = await emitRootTypeToString("rust", type);
     await assertSnapshot(ctx, code);
   }
 
