@@ -1,10 +1,13 @@
+import "npm:@total-typescript/ts-reset";
 import {
   describe,
   it,
 } from "https://deno.land/std@0.198.0/testing/bdd.ts";
 import { assertSnapshot } from "https://deno.land/std@0.198.0/testing/snapshot.ts";
-import { collapseTypes, emitTypes, parseJson } from "./main.ts";
-import { Json, Type } from "./types.ts";
+import { collapseTypes } from "./lib/collapse-types.ts";
+import { emitTypes } from "./lib/emit/rust.ts";
+import { parseJson } from "./lib/parse.ts";
+import { Json,Type } from "./lib/types.ts";
 
 describe("parseJson", () => {
   async function run(

@@ -56,3 +56,6 @@ export type HomogeneousTypeArray =
   | PrimitiveType[]
   | NullType[]
   | UnknownType[];
+
+export type EmitFn = (data: string) => void;
+export type GetTypeNameFn = (name?: string) => string;
