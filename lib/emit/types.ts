@@ -1,6 +1,6 @@
 import { Type } from "../types.ts";
 
-export type Lang = "rust";
+export type Lang = "rust" | "typescript";
 export type EmitFn = (data: string) => void;
 export type GetTypeNameFn = (name?: string) => string;
 export type EmitterModule = {

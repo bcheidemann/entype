@@ -1,20 +1,70 @@
 import "npm:@total-typescript/ts-reset";
-import { Json, Type } from "./lib/types.ts";
+import { Json } from "./lib/types.ts";
 import { parseJson } from "./lib/parse.ts";
 import { collapseTypes } from "./lib/collapse-types.ts";
 import { emitRootType } from "./lib/emit/mod.ts";
+import { parseArgs } from "./lib/cli/mod.ts";
+import { isPromiseFulfilledResult, isPromiseRejectedResult } from "./util.ts";
+
+async function main(args: string[]): Promise<0 | 1> {
+  const config = parseArgs(args);
+
+  if ("help" in config && config.help) {
+    console.log(
+      "Usage: deno run --allow-read main.ts --lang <rust|typescript> [files]\n",
+    );
+
+    if ("message" in config) {
+      console.error(config.message);
+    }
+
+    if (config.invalidArgs) {
+      return 1;
+    }
+
+    return 0;
+  }
+
+  if ("lang" in config) {
+    let exitStatusCode: 0 | 1 = 0;
+
+    const types = await Promise.allSettled(
+      config.files.map(async (file) => {
+        const json = await Deno.readTextFile(file);
+        const obj = JSON.parse(json) as Json;
+        return parseJson(obj);
+      }),
+    );
+
+    if (types.some(isPromiseRejectedResult)) {
+      console.error([
+        "Failed to parse some files:",
+        ...types.map((result, i) => {
+          if (result.status === "fulfilled") {
+            return `  ${config.files[i]}: OK`;
+          } else {
+            return `  ${config.files[i]}: ${result.reason}`;
+          }
+        }),
+      ].join("\n"));
+      exitStatusCode = 1;
+    }
+
+    const type = collapseTypes(
+      types
+        .filter(isPromiseFulfilledResult)
+        .map((result) => result.value),
+    );
+
+    await emitRootType(config.lang, type, console.log);
+
+    return exitStatusCode;
+  }
+
+  throw new Error("Unreachable (received invalid config)");
+}
 
 if (import.meta.main) {
-  if (Deno.args.includes("--help") || Deno.args.includes("-h")) {
-    console.log("Usage: deno run --allow-read main.ts <files>");
-    Deno.exit(0);
-  }
-  const types = new Array<Type>();
-  for await (const file of Deno.args) {
-    const json = await Deno.readTextFile(file);
-    const obj = JSON.parse(json) as Json;
-    types.push(parseJson(obj));
-  }
-  const type = collapseTypes(types);
-  emitRootType("rust", type, console.log);
+  const code = await main(Deno.args);
+  Deno.exit(code);
 }

@@ -53,6 +53,8 @@ async function loadEmitterModule(lang: Lang): Promise<EmitterModule> {
   switch (lang) {
     case "rust":
       return await import("./langs/rust.ts");
+    case "typescript":
+      return await import("./langs/typescript.ts");
     default:
       throw new Error(`Unsupported language: ${lang}`);
   }
