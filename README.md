@@ -4,13 +4,34 @@ Entype is a CLI tool and library which ingests serialized data formats
 (currently only JSON) and outputs type definitions for different languages
 (currently Rust and TypeScript).
 
+## Installation
+
+Entype can be installed using the Deno CLI:
+
+```sh
+deno install --allow-read https://deno.land/x/entype/main.ts
+```
+
+And can then be run using the `entype` commands:
+
+```sh
+entype --lang rust fixtures/datapack/blockstates/*.json
+```
+
+Alternatively, it can be run using the Deno CLI without the need to install the
+command globally:
+
+```sh
+deno run --allow-read https://deno.land/x/entype/main.ts --lang rust fixtures/datapack/blockstates/*.json
+```
+
 ## Usage
 
 Entype accepts files to generate type definitions for and emits type definitions
 to stdout.
 
 ```sh
-deno run --allow-read main.ts --lang typescript fixtures/datapack/blockstates/*.json
+entype --lang typescript fixtures/datapack/blockstates/*.json
 ```
 
 The above example will output the following TypeScript type definitions:
@@ -103,7 +124,7 @@ export type Root = {
 Alternatively, Rust types can be generated as follows:
 
 ```sh
-deno run --allow-read main.ts --lang rust fixtures/datapack/blockstates/*.json
+entype --lang rust fixtures/datapack/blockstates/*.json
 ```
 
 ```rust
