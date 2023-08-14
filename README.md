@@ -4,6 +4,12 @@ Entype is a CLI tool and library which ingests serialized data formats
 (currently only JSON) and outputs type definitions for different languages
 (currently Rust and TypeScript).
 
+## Prior art
+
+This tool was inspired by The Primagen's [undefined](https://github.com/ThePrimeagen/undefined)
+and is intended to be a more "production ready" alternative, implementing
+union collapsing and other additional features.
+
 ## Installation
 
 Entype can be installed using the Deno CLI:
