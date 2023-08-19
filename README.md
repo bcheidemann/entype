@@ -214,6 +214,141 @@ pub struct Root {
 }
 ```
 
+## Plugins (experimental)
+
+Plugins are an experimental feature which allow the behaviour of the type
+emitter to be customised or enhanced. Plugins can be used as follows:
+
+```sh
+entype --allow-unstable --lang rust --plugin serde-derive fixtures/datapack/blockstates/*.json
+```
+
+Note that the `--allow-unstable` flag is required to use plugins, as their
+behaviour may change in future.
+
+The above command will emit the following code:
+
+```rust
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct ArrayElement5 {
+  model: String,
+  uvlock: Option<bool>,
+  weight: Option<f64>,
+  x: Option<f64>,
+  y: Option<f64>,
+}
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Struct15 {
+  model: String,
+  uvlock: Option<bool>,
+  x: Option<f64>,
+  y: Option<f64>,
+}
+
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(untagged)]
+pub enum Apply3 {
+  Array(Vec<ArrayElement5>),
+  Struct(Struct15),
+}
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct TElement29 {
+  facing: Option<String>,
+  slot_0_occupied: Option<String>,
+  slot_1_occupied: Option<String>,
+  slot_2_occupied: Option<String>,
+  slot_3_occupied: Option<String>,
+  slot_4_occupied: Option<String>,
+  slot_5_occupied: Option<String>,
+}
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct TElement66 {
+  east: Option<String>,
+  north: Option<String>,
+  south: Option<String>,
+  up: Option<String>,
+  west: Option<String>,
+}
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T24 {
+  age: Option<String>,
+  AND: Option<Vec<TElement29>>,
+  down: Option<String>,
+  east: Option<String>,
+  facing: Option<String>,
+  flower_amount: Option<String>,
+  has_bottle_0: Option<String>,
+  has_bottle_1: Option<String>,
+  has_bottle_2: Option<String>,
+  leaves: Option<String>,
+  level: Option<String>,
+  north: Option<String>,
+  OR: Option<Vec<TElement66>>,
+  south: Option<String>,
+  up: Option<String>,
+  west: Option<String>,
+}
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct TElement2 {
+  apply: Apply3,
+  when: Option<T24>,
+}
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct ArrayElement87 {
+  model: String,
+  x: Option<f64>,
+  y: Option<f64>,
+}
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Struct93 {
+  model: String,
+  uvlock: Option<bool>,
+  x: Option<f64>,
+  y: Option<f64>,
+}
+
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(untagged)]
+pub enum TEntry85 {
+  Array(Vec<ArrayElement87>),
+  Struct(Struct93),
+}
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
+  multipart: Option<Vec<TElement2>>,
+  variants: Option<std::collections::HashMap<String, TEntry85>>,
+}
+```
+
+This code is identical to that emitted without the `serde-derive` plugin, except
+that all types have been decorated with the appropriate Serde derive macros.
+
+There are currently two inbuilt plugins:
+
+- `serde-derive`
+- `derive-debug`
+
+It is possible to implement third party plugins. If you wish to do so, you can
+use one of the [inbuilt plugins](lib/plugins/serde-derive.ts) as a reference.
+
+Third party plugins can be specified by URL:
+
+```sh
+entype \
+  --allow-unstable \
+  --lang rust \
+  --plugin "https://raw.githubusercontent.com/bcheidemann/entype/main/lib/plugins/serde-derive.ts" \
+  fixtures/datapack/blockstates/*.json
+```
+
 ## How it works
 
 Entype tries to generate the simplest possible type that accurately describes
