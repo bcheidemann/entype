@@ -18,7 +18,7 @@ Deno.bench("datapack/blockstates - no disk", async () => {
   const type = collapseTypes(
     blockstateInputs.map((input) => parseJson(JSON.parse(input) as Json)),
   );
-  await emitRootTypeToString("rust", type);
+  await emitRootTypeToString("rust", type, []);
 });
 
 const blockModelFiles = Deno.readDir("./fixtures/datapack/models/block");
@@ -43,7 +43,7 @@ Deno.bench("datapack/models - no disk", async () => {
   const type = collapseTypes(
     modelInputs.map((input) => parseJson(JSON.parse(input) as Json)),
   );
-  await emitRootTypeToString("rust", type);
+  await emitRootTypeToString("rust", type, []);
 });
 
 Deno.bench("datapack/blockstates", async () => {
@@ -60,7 +60,7 @@ Deno.bench("datapack/blockstates", async () => {
   const type = collapseTypes(
     blockstateInputs.map((input) => parseJson(JSON.parse(input) as Json)),
   );
-  await emitRootTypeToString("rust", type);
+  await emitRootTypeToString("rust", type, []);
 });
 
 Deno.bench("datapack/models", async () => {
@@ -85,5 +85,5 @@ Deno.bench("datapack/models", async () => {
   const type = collapseTypes(
     modelInputs.map((input) => parseJson(JSON.parse(input) as Json)),
   );
-  await emitRootTypeToString("rust", type);
+  await emitRootTypeToString("rust", type, []);
 });

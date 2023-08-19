@@ -9,100 +9,94 @@ import {
   UnionType,
   UnknownType,
 } from "../../types.ts";
-import { EmitFn, GetTypeNameFn } from "../types.ts";
+import { Context } from "../types.ts";
 import { indentRange, removeNumberSuffix } from "../util.ts";
 
 export function emitType(
+  context: Context,
   name: string,
   type: Type,
-  getTypeName: GetTypeNameFn,
-  emit: EmitFn,
   preferInline: boolean,
 ): string | void {
   switch (type.kind) {
     case "struct":
       return emitStructType(
+        context,
         name,
         type,
-        getTypeName,
-        emit,
         preferInline,
       );
     case "union":
       return emitUnionType(
+        context,
         name,
         type,
-        getTypeName,
-        emit,
         preferInline,
       );
     case "map":
       return emitMapType(
+        context,
         name,
         type,
-        getTypeName,
-        emit,
         preferInline,
       );
     case "option":
       return emitOptionType(
+        context,
         name,
         type,
-        getTypeName,
-        emit,
         preferInline,
       );
     case "array":
       return emitArrayType(
+        context,
         name,
         type,
-        getTypeName,
-        emit,
         preferInline,
       );
     case "primitive":
       return emitPrimitiveType(
+        context,
         name,
         type,
-        getTypeName,
-        emit,
         preferInline,
       );
     case "null":
       return emitNullType(
+        context,
         name,
         type,
-        getTypeName,
-        emit,
         preferInline,
       );
     case "unknown":
       return emitUnknownType(
+        context,
         name,
         type,
-        getTypeName,
-        emit,
         preferInline,
       );
   }
 }
 
 export function emitStructType(
+  context: Context,
   name: string,
   type: StructType,
-  getTypeName: GetTypeNameFn,
-  emit: EmitFn,
-  _preferInline: boolean,
+  preferInline: boolean,
 ) {
   const fields = Array
     .from(type.fields.entries())
     .sort(([key1], [key2]) => key1.localeCompare(key2))
     .map(([key, value]) => {
-      const typeName = getTypeName(key);
-      const inlineType = emitType(typeName, value, getTypeName, emit, true);
+      const typeName = context.getTypeName(key);
+      const inlineType = context.emitType(context, typeName, value, true);
       return `  ${key}: ${inlineType ?? typeName};`;
     });
-  emit(
+  context.emit(
+    context,
+    name,
+    type,
+    preferInline,
     [
       `export type ${name} = {`,
       ...fields,
@@ -113,23 +107,26 @@ export function emitStructType(
 }
 
 export function emitUnionType(
+  context: Context,
   name: string,
   type: UnionType,
-  getTypeName: GetTypeNameFn,
-  emit: EmitFn,
-  _preferInline: boolean,
+  preferInline: boolean,
 ) {
   const variants = Array
     .from(type.variants.entries())
     .sort(([key1], [key2]) => key1.localeCompare(key2))
     .map(([key, value], idx) => {
-      const typeName = getTypeName(key);
-      const inlineType = emitType(typeName, value, getTypeName, emit, true);
+      const typeName = context.getTypeName(key);
+      const inlineType = context.emitType(context, typeName, value, true);
       return `  | ${
         inlineType ? indentRange(inlineType, 1, inlineType.length) : typeName
       }${idx === type.variants.size - 1 ? ";" : ""}`;
     });
-  emit(
+  context.emit(
+    context,
+    name,
+    type,
+    preferInline,
     [
       `export type ${name} =`,
       ...variants,
@@ -139,25 +136,27 @@ export function emitUnionType(
 }
 
 export function emitMapType(
+  context: Context,
   name: string,
   type: MapType,
-  getTypeName: GetTypeNameFn,
-  emit: EmitFn,
   preferInline: boolean,
 ) {
-  const typeName = getTypeName(`${removeNumberSuffix(name)}Entry`);
-  const innerInlineType = emitType(
+  const typeName = context.getTypeName(`${removeNumberSuffix(name)}Entry`);
+  const innerInlineType = context.emitType(
+    context,
     typeName,
     type.valueType,
-    getTypeName,
-    emit,
     true,
   );
   const inlineType = `Record<string, ${innerInlineType ?? typeName}>`;
   if (preferInline) {
     return inlineType;
   }
-  emit(
+  context.emit(
+    context,
+    name,
+    type,
+    preferInline,
     [
       `export type ${name} = ${inlineType};`,
       "",
@@ -166,25 +165,27 @@ export function emitMapType(
 }
 
 export function emitOptionType(
+  context: Context,
   name: string,
   type: OptionType,
-  getTypeName: GetTypeNameFn,
-  emit: EmitFn,
   preferInline: boolean,
 ) {
-  const typeName = getTypeName();
-  const innerInlineType = emitType(
+  const typeName = context.getTypeName();
+  const innerInlineType = context.emitType(
+    context,
     typeName,
     type.valueType,
-    getTypeName,
-    emit,
     true,
   );
   const inlineType = `${innerInlineType ?? typeName} | null | undefined`;
   if (preferInline) {
     return inlineType;
   }
-  emit(
+  context.emit(
+    context,
+    name,
+    type,
+    preferInline,
     [
       `export type ${name} = ${inlineType};`,
       "",
@@ -193,25 +194,27 @@ export function emitOptionType(
 }
 
 export function emitArrayType(
+  context: Context,
   name: string,
   type: ArrayType,
-  getTypeName: GetTypeNameFn,
-  emit: EmitFn,
   preferInline: boolean,
 ) {
-  const typeName = getTypeName(`${removeNumberSuffix(name)}Element`);
-  const innerInlineType = emitType(
+  const typeName = context.getTypeName(`${removeNumberSuffix(name)}Element`);
+  const innerInlineType = context.emitType(
+    context,
     typeName,
     type.elementType,
-    getTypeName,
-    emit,
     true,
   );
   const inlineType = `Array<${innerInlineType ?? typeName}>`;
   if (preferInline) {
     return inlineType;
   }
-  emit(
+  context.emit(
+    context,
+    name,
+    type,
+    preferInline,
     [
       `export type ${name} = ${inlineType};`,
       "",
@@ -220,17 +223,20 @@ export function emitArrayType(
 }
 
 export function emitPrimitiveType(
+  context: Context,
   name: string,
   type: PrimitiveType,
-  _getTypeName: GetTypeNameFn,
-  emit: EmitFn,
   preferInline: boolean,
 ) {
   const inlineType = getPrimitiveName(type.name);
   if (preferInline) {
     return inlineType;
   }
-  emit(
+  context.emit(
+    context,
+    name,
+    type,
+    preferInline,
     [
       `export type ${name} = ${inlineType};`,
       "",
@@ -239,17 +245,20 @@ export function emitPrimitiveType(
 }
 
 export function emitNullType(
+  context: Context,
   name: string,
-  _type: NullType,
-  _getTypeName: GetTypeNameFn,
-  emit: EmitFn,
+  type: NullType,
   preferInline: boolean,
 ) {
   const inlineType = "null | undefined";
   if (preferInline) {
     return inlineType;
   }
-  emit(
+  context.emit(
+    context,
+    name,
+    type,
+    preferInline,
     [
       `export type ${name} = ${inlineType};`,
       "",
@@ -258,17 +267,20 @@ export function emitNullType(
 }
 
 export function emitUnknownType(
+  context: Context,
   name: string,
-  _type: UnknownType,
-  _getTypeName: GetTypeNameFn,
-  emit: EmitFn,
+  type: UnknownType,
   preferInline: boolean,
 ) {
   const inlineType = "unknown";
   if (preferInline) {
     return inlineType;
   }
-  emit(
+  context.emit(
+    context,
+    name,
+    type,
+    preferInline,
     [
       `export type ${name} = ${inlineType};`,
       "",

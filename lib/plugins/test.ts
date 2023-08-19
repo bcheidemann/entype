@@ -3,10 +3,11 @@ import { describe, it } from "https://deno.land/std@0.198.0/testing/bdd.ts";
 import { assertSnapshot } from "https://deno.land/std@0.198.0/testing/snapshot.ts";
 import { parseJson } from "../parse.ts";
 import { Json, Type } from "../types.ts";
-import { emitRootTypeToString } from "./mod.ts";
 import { collapseTypes } from "../collapse-types.ts";
+import { emitRootTypeToString } from "../emit/mod.ts";
+import { loadPlugin } from "./mod.ts";
 
-describe("Emit Rust Types", () => {
+describe("Serde Derive Plugin", () => {
   async function run(
     ctx: Deno.TestContext,
     filename: string,
@@ -14,7 +15,8 @@ describe("Emit Rust Types", () => {
     const json = await Deno.readTextFile(`./fixtures/${filename}`);
     const obj = JSON.parse(json) as Json;
     const type = parseJson(obj);
-    const code = await emitRootTypeToString("rust", type, []);
+    const plugins = [await loadPlugin("serde-derive")];
+    const code = await emitRootTypeToString("rust", type, plugins);
     await assertSnapshot(ctx, code);
   }
 
@@ -129,7 +131,8 @@ describe("Emit Rust Types", () => {
         types.push(parseJson(obj));
       }
       const type = collapseTypes(types);
-      const code = await emitRootTypeToString("rust", type, []);
+      const plugins = [await loadPlugin("serde-derive")];
+      const code = await emitRootTypeToString("rust", type, plugins);
       await assertSnapshot(ctx, code);
     }
 

@@ -1,4 +1,5 @@
 import { Lang } from "../emit/types.ts";
+import { PluginName } from "../plugins/types.ts";
 
 export type HelpConfig = {
   help: true;
@@ -12,6 +13,7 @@ export type VersionConfig = {
 
 export type LangConfig = {
   lang: Lang;
+  plugins: PluginName[];
   files: string[];
 };
 

@@ -18,9 +18,14 @@ export function parseLangArgs(context: ParseLangArgsContext): Config {
   while (!context.atEnd()) {
     const arg = context.advance();
     switch (arg) {
+      case "--allow-unstable":
+        return parseAllowUnstableArg(context);
       case "--lang":
       case "-l":
         return parseLangArg(context);
+      case "--plugin":
+      case "-p":
+        return parsePluginArg(context);
       case "--help":
       case "-h":
         return parseHelpArg(context);
@@ -33,6 +38,13 @@ export function parseLangArgs(context: ParseLangArgsContext): Config {
   }
 
   return context.getConfig();
+}
+
+export function parseAllowUnstableArg(
+  context: ParseLangArgsContext,
+): Config {
+  context.setAllowUnstable();
+  return parseLangArgs(context);
 }
 
 export function parseLangArg(
@@ -61,6 +73,23 @@ export function parseLangArg(
           `Unknown language specified at position ${context.previousPosition}: ${lang}`,
       };
   }
+}
+
+export function parsePluginArg(
+  context: ParseLangArgsContext,
+): Config {
+  if (context.atEnd()) {
+    return {
+      help: true,
+      invalidArgs: true,
+      message: `Missing argument for --lang`,
+    };
+  }
+
+  const pluginName = context.advance();
+  context.addPlugin(pluginName);
+
+  return parseLangArgs(context);
 }
 
 export function parseHelpArg(

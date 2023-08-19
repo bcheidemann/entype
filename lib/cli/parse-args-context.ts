@@ -1,4 +1,5 @@
 import { Lang } from "../emit/types.ts";
+import { PluginName } from "../plugins/types.ts";
 import { Config } from "./types.ts";
 
 export abstract class ParseArgsContext {
@@ -40,10 +41,23 @@ export abstract class ParseArgsContext {
 }
 
 export class ParseLangArgsContext extends ParseArgsContext {
+  private allowUnstable = false;
   private lang: Lang | null = null;
+  private plugins: PluginName[] = [];
   private files: string[] = [];
 
   public getConfig(): Config {
+    if (
+      !this.allowUnstable &&
+      this.plugins.length > 0
+    ) {
+      return {
+        help: true,
+        invalidArgs: true,
+        message:
+          "Plugins are unstable and may change in future versions. Use --allow-unstable to enable them.",
+      };
+    }
     if (this.lang === null) {
       return {
         help: true,
@@ -53,12 +67,21 @@ export class ParseLangArgsContext extends ParseArgsContext {
     }
     return {
       lang: this.lang,
+      plugins: this.plugins,
       files: this.files,
     };
   }
 
+  public setAllowUnstable() {
+    this.allowUnstable = true;
+  }
+
   public addFile(file: string) {
     this.files.push(file);
+  }
+
+  public addPlugin(pluginName: PluginName) {
+    this.plugins.push(pluginName);
   }
 
   public setLang(lang: Lang) {

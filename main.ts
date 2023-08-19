@@ -5,11 +5,12 @@ import { collapseTypes } from "./lib/collapse-types.ts";
 import { emitRootType } from "./lib/emit/mod.ts";
 import { parseArgs } from "./lib/cli/mod.ts";
 import { isPromiseFulfilledResult, isPromiseRejectedResult } from "./util.ts";
+import { loadPlugin } from "./lib/plugins/mod.ts";
 
 async function main(args: string[]): Promise<0 | 1> {
   const config = parseArgs(args);
 
-  if ("help" in config && config.help) {
+  if ("help" in config) {
     console.log(
       "Usage: deno run --allow-read main.ts --lang <rust|typescript> [files]\n",
     );
@@ -26,7 +27,7 @@ async function main(args: string[]): Promise<0 | 1> {
   }
 
   if ("version" in config) {
-    console.log("1.0.1");
+    console.log("1.1.0");
     return 0;
   }
 
@@ -61,7 +62,9 @@ async function main(args: string[]): Promise<0 | 1> {
         .map((result) => result.value),
     );
 
-    await emitRootType(config.lang, type, console.log);
+    const plugins = await Promise.all(config.plugins.map(loadPlugin));
+
+    await emitRootType(config.lang, type, plugins, console.log);
 
     return exitStatusCode;
   }
