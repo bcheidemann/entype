@@ -2,6 +2,7 @@ export const snapshot = {};
 
 snapshot[`Emit Rust Types > emit array-0.json 1`] = `
 "pub type Root = Vec<f64>;
+
 "
 `;
 
@@ -10,7 +11,9 @@ snapshot[`Emit Rust Types > emit array-1.json 1`] = `
   key1: String,
   key2: String,
 }
+
 pub type Root = Vec<RootElement0>;
+
 "
 `;
 
@@ -20,12 +23,15 @@ snapshot[`Emit Rust Types > emit array-2.json 1`] = `
   key2: String,
   optional: Option<String>,
 }
+
 pub type Root = Vec<RootElement0>;
+
 "
 `;
 
 snapshot[`Emit Rust Types > emit array-3.json 1`] = `
 "pub type Root = Vec<std::collections::HashMap<String, String>>;
+
 "
 `;
 
@@ -34,59 +40,72 @@ snapshot[`Emit Rust Types > emit array-4.json 1`] = `
   Number(f64),
   String(String),
 }
+
 pub struct Struct5 {
   key4: String,
 }
+
 pub enum RootElementEntry1 {
   Primitive(Primitive2),
   Struct(Struct5),
 }
+
 pub type Root = Vec<std::collections::HashMap<String, RootElementEntry1>>;
+
 "
 `;
 
 snapshot[`Emit Rust Types > emit boolean-false.json 1`] = `
 "pub type Root = bool;
+
 "
 `;
 
 snapshot[`Emit Rust Types > emit boolean-true.json 1`] = `
 "pub type Root = bool;
+
 "
 `;
 
 snapshot[`Emit Rust Types > emit map-0.json 1`] = `
 "pub type Root = std::collections::HashMap<String, f64>;
+
 "
 `;
 
 snapshot[`Emit Rust Types > emit map-1.json 1`] = `
 "pub type Root = std::collections::HashMap<String, f64>;
+
 "
 `;
 
 snapshot[`Emit Rust Types > emit map-2.json 1`] = `
 "pub type Root = std::collections::HashMap<String, f64>;
+
 "
 `;
 
 snapshot[`Emit Rust Types > emit null.json 1`] = `
 "pub type Root = ();
+
 "
 `;
 
 snapshot[`Emit Rust Types > emit number-negative.json 1`] = `
 "pub type Root = f64;
+
 "
 `;
 
 snapshot[`Emit Rust Types > emit number-positive.json 1`] = `
 "pub type Root = f64;
+
 "
 `;
 
 snapshot[`Emit Rust Types > emit number-zero.json 1`] = `
 "pub type Root = f64;
+
 "
 `;
 
@@ -94,6 +113,7 @@ snapshot[`Emit Rust Types > emit object-0.json 1`] = `
 "pub struct Root {
   key: String,
 }
+
 "
 `;
 
@@ -101,6 +121,7 @@ snapshot[`Emit Rust Types > emit object-1.json 1`] = `
 "pub struct Root {
   key: f64,
 }
+
 "
 `;
 
@@ -108,6 +129,7 @@ snapshot[`Emit Rust Types > emit object-2.json 1`] = `
 "pub struct Root {
   key: bool,
 }
+
 "
 `;
 
@@ -115,6 +137,7 @@ snapshot[`Emit Rust Types > emit object-3.json 1`] = `
 "pub struct Root {
   key: Vec<String>,
 }
+
 "
 `;
 
@@ -122,9 +145,11 @@ snapshot[`Emit Rust Types > emit object-4.json 1`] = `
 "pub struct Key0 {
   key: String,
 }
+
 pub struct Root {
   key: Key0,
 }
+
 "
 `;
 
@@ -132,6 +157,7 @@ snapshot[`Emit Rust Types > emit object-5.json 1`] = `
 "pub struct Root {
   key: (),
 }
+
 "
 `;
 
@@ -139,9 +165,11 @@ snapshot[`Emit Rust Types > emit object-6.json 1`] = `
 "pub struct KeyElement1 {
   key: String,
 }
+
 pub struct Root {
   key: Vec<KeyElement1>,
 }
+
 "
 `;
 
@@ -150,9 +178,11 @@ snapshot[`Emit Rust Types > emit object-7.json 1`] = `
   Boolean(bool),
   String(String),
 }
+
 pub struct Root {
   key: Vec<KeyElement1>,
 }
+
 "
 `;
 
@@ -160,6 +190,7 @@ snapshot[`Emit Rust Types > emit object-8.json 1`] = `
 "pub struct Key8 {
   key1: String,
 }
+
 pub struct Root {
   key1: bool,
   key2: bool,
@@ -170,6 +201,7 @@ pub struct Root {
   key7: Vec<f64>,
   key8: Key8,
 }
+
 "
 `;
 
@@ -178,12 +210,15 @@ snapshot[`Emit Rust Types > parses regression-0-option-option.json 1`] = `
   facing: Option<String>,
   slot_0_occupied: Option<String>,
 }
+
 pub struct MultipartElement1 {
   AND: Vec<ANDElement3>,
 }
+
 pub struct Root {
   multipart: Vec<MultipartElement1>,
 }
+
 "
 `;
 
@@ -195,16 +230,19 @@ snapshot[`Emit Rust Types > Multiple-Files > datapack/blockstates 1`] = `
   x: Option<f64>,
   y: Option<f64>,
 }
+
 pub struct Struct15 {
   model: String,
   uvlock: Option<bool>,
   x: Option<f64>,
   y: Option<f64>,
 }
+
 pub enum Apply3 {
   Array(Vec<ArrayElement5>),
   Struct(Struct15),
 }
+
 pub struct TElement29 {
   facing: Option<String>,
   slot_0_occupied: Option<String>,
@@ -214,6 +252,7 @@ pub struct TElement29 {
   slot_4_occupied: Option<String>,
   slot_5_occupied: Option<String>,
 }
+
 pub struct TElement66 {
   east: Option<String>,
   north: Option<String>,
@@ -221,6 +260,7 @@ pub struct TElement66 {
   up: Option<String>,
   west: Option<String>,
 }
+
 pub struct T24 {
   age: Option<String>,
   AND: Option<Vec<TElement29>>,
@@ -239,29 +279,35 @@ pub struct T24 {
   up: Option<String>,
   west: Option<String>,
 }
+
 pub struct TElement2 {
   apply: Apply3,
   when: Option<T24>,
 }
+
 pub struct ArrayElement87 {
   model: String,
   x: Option<f64>,
   y: Option<f64>,
 }
+
 pub struct Struct93 {
   model: String,
   uvlock: Option<bool>,
   x: Option<f64>,
   y: Option<f64>,
 }
+
 pub enum TEntry85 {
   Array(Vec<ArrayElement87>),
   Struct(Struct93),
 }
+
 pub struct Root {
   multipart: Option<Vec<TElement2>>,
   variants: Option<std::collections::HashMap<String, TEntry85>>,
 }
+
 "
 `;
 
@@ -271,41 +317,49 @@ snapshot[`Emit Rust Types > Multiple-Files > datapack/models/block 1`] = `
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
+
 pub struct T13 {
   rotation: Vec<f64>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
+
 pub struct T21 {
   rotation: Vec<f64>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
+
 pub struct T29 {
   rotation: Vec<f64>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
+
 pub struct T37 {
   rotation: Vec<f64>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
+
 pub struct T45 {
   rotation: Option<Vec<f64>>,
   scale: Option<Vec<f64>>,
   translation: Vec<f64>,
 }
+
 pub struct T55 {
   rotation: Vec<f64>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
+
 pub struct T63 {
   rotation: Option<Vec<f64>>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
+
 pub struct T3 {
   firstperson_lefthand: Option<T5>,
   firstperson_righthand: Option<T13>,
@@ -316,6 +370,7 @@ pub struct T3 {
   thirdperson_lefthand: Option<T55>,
   thirdperson_righthand: Option<T63>,
 }
+
 pub struct T78 {
   cullface: Option<String>,
   rotation: Option<f64>,
@@ -323,6 +378,7 @@ pub struct T78 {
   tintindex: Option<f64>,
   uv: Option<Vec<f64>>,
 }
+
 pub struct T90 {
   cullface: Option<String>,
   rotation: Option<f64>,
@@ -330,6 +386,7 @@ pub struct T90 {
   tintindex: Option<f64>,
   uv: Option<Vec<f64>>,
 }
+
 pub struct T102 {
   cullface: Option<String>,
   rotation: Option<f64>,
@@ -337,6 +394,7 @@ pub struct T102 {
   tintindex: Option<f64>,
   uv: Option<Vec<f64>>,
 }
+
 pub struct T114 {
   cullface: Option<String>,
   rotation: Option<f64>,
@@ -344,6 +402,7 @@ pub struct T114 {
   tintindex: Option<f64>,
   uv: Option<Vec<f64>>,
 }
+
 pub struct T126 {
   cullface: Option<String>,
   rotation: Option<f64>,
@@ -351,6 +410,7 @@ pub struct T126 {
   tintindex: Option<f64>,
   uv: Option<Vec<f64>>,
 }
+
 pub struct T138 {
   cullface: Option<String>,
   rotation: Option<f64>,
@@ -358,6 +418,7 @@ pub struct T138 {
   tintindex: Option<f64>,
   uv: Option<Vec<f64>>,
 }
+
 pub struct Faces76 {
   down: Option<T78>,
   east: Option<T90>,
@@ -366,12 +427,14 @@ pub struct Faces76 {
   up: Option<T126>,
   west: Option<T138>,
 }
+
 pub struct T154 {
   angle: f64,
   axis: String,
   origin: Vec<f64>,
   rescale: Option<bool>,
 }
+
 pub struct TElement73 {
   __comment: Option<String>,
   faces: Faces76,
@@ -381,12 +444,14 @@ pub struct TElement73 {
   shade: Option<bool>,
   to: Vec<f64>,
 }
+
 pub struct TElement167 {
   children: Vec<f64>,
   color: f64,
   name: String,
   origin: Vec<f64>,
 }
+
 pub struct T179 {
   all: Option<String>,
   amethyst: Option<String>,
@@ -481,6 +546,7 @@ pub struct T179 {
   wood: Option<String>,
   wool: Option<String>,
 }
+
 pub struct Root {
   ambientocclusion: Option<bool>,
   display: Option<T3>,
@@ -490,6 +556,7 @@ pub struct Root {
   parent: Option<String>,
   textures: Option<T179>,
 }
+
 "
 `;
 
@@ -499,41 +566,49 @@ snapshot[`Emit Rust Types > Multiple-Files > datapack/models/item 1`] = `
   scale: Option<Vec<f64>>,
   translation: Vec<f64>,
 }
+
 pub struct T12 {
   rotation: Vec<f64>,
   scale: Option<Vec<f64>>,
   translation: Vec<f64>,
 }
+
 pub struct T21 {
   rotation: Option<Vec<f64>>,
   scale: Option<Vec<f64>>,
   translation: Option<Vec<f64>>,
 }
+
 pub struct T32 {
   rotation: Vec<f64>,
   scale: Option<Vec<f64>>,
   translation: Option<Vec<f64>>,
 }
+
 pub struct T42 {
   rotation: Option<Vec<f64>>,
   scale: Option<Vec<f64>>,
   translation: Option<Vec<f64>>,
 }
+
 pub struct T53 {
   rotation: Option<Vec<f64>>,
   scale: Option<Vec<f64>>,
   translation: Vec<f64>,
 }
+
 pub struct T63 {
   rotation: Vec<f64>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
+
 pub struct T71 {
   rotation: Option<Vec<f64>>,
   scale: Option<Vec<f64>>,
   translation: Vec<f64>,
 }
+
 pub struct T1 {
   firstperson_lefthand: Option<T3>,
   firstperson_righthand: Option<T12>,
@@ -544,30 +619,37 @@ pub struct T1 {
   thirdperson_lefthand: Option<T63>,
   thirdperson_righthand: Option<T71>,
 }
+
 pub struct T85 {
   texture: String,
   uv: Vec<f64>,
 }
+
 pub struct East89 {
   texture: String,
   uv: Vec<f64>,
 }
+
 pub struct North93 {
   texture: String,
   uv: Vec<f64>,
 }
+
 pub struct South97 {
   texture: String,
   uv: Vec<f64>,
 }
+
 pub struct Up101 {
   texture: String,
   uv: Vec<f64>,
 }
+
 pub struct West105 {
   texture: String,
   uv: Vec<f64>,
 }
+
 pub struct Faces83 {
   down: Option<T85>,
   east: East89,
@@ -576,11 +658,13 @@ pub struct Faces83 {
   up: Up101,
   west: West105,
 }
+
 pub struct TElement82 {
   faces: Faces83,
   from: Vec<f64>,
   to: Vec<f64>,
 }
+
 pub struct Predicate119 {
   angle: Option<f64>,
   blocking: Option<f64>,
@@ -598,10 +682,12 @@ pub struct Predicate119 {
   tooting: Option<f64>,
   trim_type: Option<f64>,
 }
+
 pub struct TElement117 {
   model: String,
   predicate: Predicate119,
 }
+
 pub struct T153 {
   layer0: Option<String>,
   layer1: Option<String>,
@@ -609,6 +695,7 @@ pub struct T153 {
   particle: Option<String>,
   spyglass: Option<String>,
 }
+
 pub struct Root {
   display: Option<T1>,
   elements: Option<Vec<TElement82>>,
@@ -617,5 +704,6 @@ pub struct Root {
   parent: Option<String>,
   textures: Option<T153>,
 }
+
 "
 `;

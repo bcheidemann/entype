@@ -2,165 +2,217 @@ export const snapshot = {};
 
 snapshot[`Serde Derive Plugin > emit array-0.json 1`] = `
 "pub type Root = Vec<f64>;
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit array-1.json 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct RootElement0 {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct RootElement0 {
   key1: String,
   key2: String,
 }
+
 pub type Root = Vec<RootElement0>;
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit array-2.json 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct RootElement0 {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct RootElement0 {
   key1: String,
   key2: String,
   optional: Option<String>,
 }
+
 pub type Root = Vec<RootElement0>;
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit array-3.json 1`] = `
 "pub type Root = Vec<std::collections::HashMap<String, String>>;
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit array-4.json 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]#[serde(untagged)]pub enum Primitive2 {
+"#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(untagged)]
+pub enum Primitive2 {
   Number(f64),
   String(String),
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Struct5 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Struct5 {
   key4: String,
 }
-#[derive(serde::Serialize, serde::Deserialize)]#[serde(untagged)]pub enum RootElementEntry1 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(untagged)]
+pub enum RootElementEntry1 {
   Primitive(Primitive2),
   Struct(Struct5),
 }
+
 pub type Root = Vec<std::collections::HashMap<String, RootElementEntry1>>;
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit boolean-false.json 1`] = `
 "pub type Root = bool;
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit boolean-true.json 1`] = `
 "pub type Root = bool;
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit map-0.json 1`] = `
 "pub type Root = std::collections::HashMap<String, f64>;
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit map-1.json 1`] = `
 "pub type Root = std::collections::HashMap<String, f64>;
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit map-2.json 1`] = `
 "pub type Root = std::collections::HashMap<String, f64>;
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit null.json 1`] = `
 "pub type Root = ();
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit number-negative.json 1`] = `
 "pub type Root = f64;
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit number-positive.json 1`] = `
 "pub type Root = f64;
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit number-zero.json 1`] = `
 "pub type Root = f64;
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit object-0.json 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct Root {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
   key: String,
 }
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit object-1.json 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct Root {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
   key: f64,
 }
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit object-2.json 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct Root {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
   key: bool,
 }
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit object-3.json 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct Root {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
   key: Vec<String>,
 }
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit object-4.json 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct Key0 {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Key0 {
   key: String,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Root {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
   key: Key0,
 }
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit object-5.json 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct Root {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
   key: (),
 }
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit object-6.json 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct KeyElement1 {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct KeyElement1 {
   key: String,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Root {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
   key: Vec<KeyElement1>,
 }
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit object-7.json 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]#[serde(untagged)]pub enum KeyElement1 {
+"#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(untagged)]
+pub enum KeyElement1 {
   Boolean(bool),
   String(String),
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Root {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
   key: Vec<KeyElement1>,
 }
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > emit object-8.json 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct Key8 {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Key8 {
   key1: String,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Root {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
   key1: bool,
   key2: bool,
   key3: (),
@@ -170,42 +222,57 @@ snapshot[`Serde Derive Plugin > emit object-8.json 1`] = `
   key7: Vec<f64>,
   key8: Key8,
 }
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > parses regression-0-option-option.json 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct ANDElement3 {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct ANDElement3 {
   facing: Option<String>,
   slot_0_occupied: Option<String>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct MultipartElement1 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct MultipartElement1 {
   AND: Vec<ANDElement3>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Root {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
   multipart: Vec<MultipartElement1>,
 }
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > Multiple-Files > datapack/blockstates 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct ArrayElement5 {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct ArrayElement5 {
   model: String,
   uvlock: Option<bool>,
   weight: Option<f64>,
   x: Option<f64>,
   y: Option<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Struct15 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Struct15 {
   model: String,
   uvlock: Option<bool>,
   x: Option<f64>,
   y: Option<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]#[serde(untagged)]pub enum Apply3 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(untagged)]
+pub enum Apply3 {
   Array(Vec<ArrayElement5>),
   Struct(Struct15),
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct TElement29 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct TElement29 {
   facing: Option<String>,
   slot_0_occupied: Option<String>,
   slot_1_occupied: Option<String>,
@@ -214,14 +281,18 @@ snapshot[`Serde Derive Plugin > Multiple-Files > datapack/blockstates 1`] = `
   slot_4_occupied: Option<String>,
   slot_5_occupied: Option<String>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct TElement66 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct TElement66 {
   east: Option<String>,
   north: Option<String>,
   south: Option<String>,
   up: Option<String>,
   west: Option<String>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T24 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T24 {
   age: Option<String>,
   AND: Option<Vec<TElement29>>,
   down: Option<String>,
@@ -239,74 +310,103 @@ snapshot[`Serde Derive Plugin > Multiple-Files > datapack/blockstates 1`] = `
   up: Option<String>,
   west: Option<String>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct TElement2 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct TElement2 {
   apply: Apply3,
   when: Option<T24>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct ArrayElement87 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct ArrayElement87 {
   model: String,
   x: Option<f64>,
   y: Option<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Struct93 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Struct93 {
   model: String,
   uvlock: Option<bool>,
   x: Option<f64>,
   y: Option<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]#[serde(untagged)]pub enum TEntry85 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+#[serde(untagged)]
+pub enum TEntry85 {
   Array(Vec<ArrayElement87>),
   Struct(Struct93),
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Root {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
   multipart: Option<Vec<TElement2>>,
   variants: Option<std::collections::HashMap<String, TEntry85>>,
 }
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > Multiple-Files > datapack/models/block 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct T5 {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T5 {
   rotation: Vec<f64>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T13 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T13 {
   rotation: Vec<f64>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T21 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T21 {
   rotation: Vec<f64>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T29 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T29 {
   rotation: Vec<f64>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T37 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T37 {
   rotation: Vec<f64>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T45 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T45 {
   rotation: Option<Vec<f64>>,
   scale: Option<Vec<f64>>,
   translation: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T55 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T55 {
   rotation: Vec<f64>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T63 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T63 {
   rotation: Option<Vec<f64>>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T3 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T3 {
   firstperson_lefthand: Option<T5>,
   firstperson_righthand: Option<T13>,
   fixed: Option<T21>,
@@ -316,49 +416,63 @@ snapshot[`Serde Derive Plugin > Multiple-Files > datapack/models/block 1`] = `
   thirdperson_lefthand: Option<T55>,
   thirdperson_righthand: Option<T63>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T78 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T78 {
   cullface: Option<String>,
   rotation: Option<f64>,
   texture: String,
   tintindex: Option<f64>,
   uv: Option<Vec<f64>>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T90 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T90 {
   cullface: Option<String>,
   rotation: Option<f64>,
   texture: String,
   tintindex: Option<f64>,
   uv: Option<Vec<f64>>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T102 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T102 {
   cullface: Option<String>,
   rotation: Option<f64>,
   texture: String,
   tintindex: Option<f64>,
   uv: Option<Vec<f64>>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T114 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T114 {
   cullface: Option<String>,
   rotation: Option<f64>,
   texture: String,
   tintindex: Option<f64>,
   uv: Option<Vec<f64>>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T126 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T126 {
   cullface: Option<String>,
   rotation: Option<f64>,
   texture: String,
   tintindex: Option<f64>,
   uv: Option<Vec<f64>>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T138 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T138 {
   cullface: Option<String>,
   rotation: Option<f64>,
   texture: String,
   tintindex: Option<f64>,
   uv: Option<Vec<f64>>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Faces76 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Faces76 {
   down: Option<T78>,
   east: Option<T90>,
   north: Option<T102>,
@@ -366,13 +480,17 @@ snapshot[`Serde Derive Plugin > Multiple-Files > datapack/models/block 1`] = `
   up: Option<T126>,
   west: Option<T138>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T154 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T154 {
   angle: f64,
   axis: String,
   origin: Vec<f64>,
   rescale: Option<bool>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct TElement73 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct TElement73 {
   __comment: Option<String>,
   faces: Faces76,
   from: Vec<f64>,
@@ -381,13 +499,17 @@ snapshot[`Serde Derive Plugin > Multiple-Files > datapack/models/block 1`] = `
   shade: Option<bool>,
   to: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct TElement167 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct TElement167 {
   children: Vec<f64>,
   color: f64,
   name: String,
   origin: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T179 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T179 {
   all: Option<String>,
   amethyst: Option<String>,
   back: Option<String>,
@@ -481,7 +603,9 @@ snapshot[`Serde Derive Plugin > Multiple-Files > datapack/models/block 1`] = `
   wood: Option<String>,
   wool: Option<String>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Root {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
   ambientocclusion: Option<bool>,
   display: Option<T3>,
   elements: Option<Vec<TElement73>>,
@@ -490,51 +614,69 @@ snapshot[`Serde Derive Plugin > Multiple-Files > datapack/models/block 1`] = `
   parent: Option<String>,
   textures: Option<T179>,
 }
+
 "
 `;
 
 snapshot[`Serde Derive Plugin > Multiple-Files > datapack/models/item 1`] = `
-"#[derive(serde::Serialize, serde::Deserialize)]pub struct T3 {
+"#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T3 {
   rotation: Vec<f64>,
   scale: Option<Vec<f64>>,
   translation: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T12 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T12 {
   rotation: Vec<f64>,
   scale: Option<Vec<f64>>,
   translation: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T21 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T21 {
   rotation: Option<Vec<f64>>,
   scale: Option<Vec<f64>>,
   translation: Option<Vec<f64>>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T32 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T32 {
   rotation: Vec<f64>,
   scale: Option<Vec<f64>>,
   translation: Option<Vec<f64>>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T42 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T42 {
   rotation: Option<Vec<f64>>,
   scale: Option<Vec<f64>>,
   translation: Option<Vec<f64>>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T53 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T53 {
   rotation: Option<Vec<f64>>,
   scale: Option<Vec<f64>>,
   translation: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T63 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T63 {
   rotation: Vec<f64>,
   scale: Vec<f64>,
   translation: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T71 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T71 {
   rotation: Option<Vec<f64>>,
   scale: Option<Vec<f64>>,
   translation: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T1 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T1 {
   firstperson_lefthand: Option<T3>,
   firstperson_righthand: Option<T12>,
   fixed: Option<T21>,
@@ -544,31 +686,45 @@ snapshot[`Serde Derive Plugin > Multiple-Files > datapack/models/item 1`] = `
   thirdperson_lefthand: Option<T63>,
   thirdperson_righthand: Option<T71>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T85 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T85 {
   texture: String,
   uv: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct East89 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct East89 {
   texture: String,
   uv: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct North93 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct North93 {
   texture: String,
   uv: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct South97 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct South97 {
   texture: String,
   uv: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Up101 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Up101 {
   texture: String,
   uv: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct West105 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct West105 {
   texture: String,
   uv: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Faces83 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Faces83 {
   down: Option<T85>,
   east: East89,
   north: North93,
@@ -576,12 +732,16 @@ snapshot[`Serde Derive Plugin > Multiple-Files > datapack/models/item 1`] = `
   up: Up101,
   west: West105,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct TElement82 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct TElement82 {
   faces: Faces83,
   from: Vec<f64>,
   to: Vec<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Predicate119 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Predicate119 {
   angle: Option<f64>,
   blocking: Option<f64>,
   broken: Option<f64>,
@@ -598,18 +758,24 @@ snapshot[`Serde Derive Plugin > Multiple-Files > datapack/models/item 1`] = `
   tooting: Option<f64>,
   trim_type: Option<f64>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct TElement117 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct TElement117 {
   model: String,
   predicate: Predicate119,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct T153 {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct T153 {
   layer0: Option<String>,
   layer1: Option<String>,
   layer2: Option<String>,
   particle: Option<String>,
   spyglass: Option<String>,
 }
-#[derive(serde::Serialize, serde::Deserialize)]pub struct Root {
+
+#[derive(serde::Serialize, serde::Deserialize)]
+pub struct Root {
   display: Option<T1>,
   elements: Option<Vec<TElement82>>,
   gui_light: Option<String>,
@@ -617,5 +783,6 @@ snapshot[`Serde Derive Plugin > Multiple-Files > datapack/models/item 1`] = `
   parent: Option<String>,
   textures: Option<T153>,
 }
+
 "
 `;

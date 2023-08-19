@@ -97,7 +97,7 @@ export async function emitTypeToString(
 ): Promise<string> {
   let code = "";
   function emit(data: string) {
-    code += data;
+    code += `${data}\n`;
   }
   await emitType(lang, name, type, plugins, emit, getTypeName);
   return code;
