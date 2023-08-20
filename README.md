@@ -349,6 +349,21 @@ entype \
   fixtures/datapack/blockstates/*.json
 ```
 
+Alternatively, the `github:` qualifier can be used:
+
+```sh
+entype \
+  --allow-unstable \
+  --lang rust \
+  --plugin "github:bcheidemann/entype/lib/plugins/derive-debug.ts" \
+  fixtures/datapack/blockstates/*.json
+```
+
+The format is `github:<branch>@<owner>/<repo>/<path>`, where `branch` defaults
+to `main` and `path` defaults to `mod.ts`. The plugin speicifier
+`github:bcheidemann/entype-plugin-example` would be resolved to
+`https://raw.githubusercontent.com/bcheidemann/entype-plugin-example/main/mod.ts`.
+
 ## How it works
 
 Entype tries to generate the simplest possible type that accurately describes
