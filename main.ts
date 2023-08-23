@@ -27,7 +27,7 @@ async function main(args: string[]): Promise<0 | 1> {
   }
 
   if ("version" in config) {
-    console.log("1.2.0");
+    console.log("1.2.1");
     return 0;
   }
 

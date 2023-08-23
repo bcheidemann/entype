@@ -9,7 +9,7 @@ Entype is a CLI tool and library which ingests serialized data formats
 Entype can be installed using the Deno CLI:
 
 ```sh
-deno install --allow-read https://deno.land/x/entype/main.ts
+deno install --allow-read --allow-net https://deno.land/x/entype/main.ts
 ```
 
 And can then be run using the `entype` commands:
