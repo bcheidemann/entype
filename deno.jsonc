@@ -1,5 +1,9 @@
 {
   "tasks": {
-    "dev": "deno run --watch main.ts"
+    "dev": "deno run --allow-read=. --allow-write=. --allow-net main.ts",
+    "debug": "deno run --allow-read=. --allow-write=. --allow-net --inspect-brk main.ts",
+    "test": "deno test --allow-read=. --allow-write=.",
+    "bench": "deno bench --allow-read=. --allow-write=.",
+    "build:npm": "deno run --allow-read --allow-write --allow-env=DENO_DIR,XDG_CACHE_HOME,HOME,DENO_AUTH_TOKENS,XDG_DATA_HOME --allow-net=deno.land --allow-run=npm scripts/build-npm.ts"
   }
 }

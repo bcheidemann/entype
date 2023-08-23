@@ -1,1 +1,1 @@
-export { parseArgs } from "./parse-args.ts";
+export * from "./main.ts";

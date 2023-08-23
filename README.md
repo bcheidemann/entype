@@ -6,13 +6,15 @@ Entype is a CLI tool and library which ingests serialized data formats
 
 ## Installation
 
+### Deno
+
 Entype can be installed using the Deno CLI:
 
 ```sh
 deno install --allow-read --allow-net https://deno.land/x/entype/main.ts
 ```
 
-And can then be run using the `entype` commands:
+And can then be run using the `entype` command:
 
 ```sh
 entype --lang rust fixtures/datapack/blockstates/*.json
@@ -23,6 +25,27 @@ command globally:
 
 ```sh
 deno run --allow-read https://deno.land/x/entype/main.ts --lang rust fixtures/datapack/blockstates/*.json
+```
+
+### NPM
+
+Entype can be installed using NPM:
+
+```sh
+npm i -g typegen-json
+```
+
+And can then be run using the `typegen-json` command:
+
+```sh
+typegen-json --lang rust fixtures/datapack/blockstates/*.json
+```
+
+Alternatively, it can be run using NPX without the need to install the command
+globally:
+
+```sh
+npx typegen-json --lang rust fixtures/datapack/blockstates/*.json
 ```
 
 ## Usage
@@ -363,6 +386,12 @@ The format is `github:<branch>@<owner>/<repo>/<path>`, where `branch` defaults
 to `main` and `path` defaults to `mod.ts`. The plugin speicifier
 `github:bcheidemann/entype-plugin-example` would be resolved to
 `https://raw.githubusercontent.com/bcheidemann/entype-plugin-example/main/mod.ts`.
+
+### Node.js
+
+For Node.js versions of entype (i.e. the one installed from NPM) plugins cannot
+be imported by URL. Instead, third party plugins must be published to NPM and
+can then be imported by their package name.
 
 ## How it works
 
