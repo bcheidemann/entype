@@ -21,7 +21,7 @@ export async function main(
       );
     } else {
       console.log(
-        "Usage: node typegen-json --lang <rust|typescript> [files]\n",
+        "Usage: typegen-json --lang <rust|typescript> [files]\n",
       );
     }
 
